@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Build.Content;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class MonsterMove : MonsterInfo
 {
-    [SerializeField] private float speed;
+    [SerializeField] private float moveSpeed;
     public Rigidbody2D targetPlayer;
 
     SpriteRenderer sprite;
@@ -22,7 +23,7 @@ public class MonsterMove : MonsterInfo
     { 
         // 몬스터의 방향
         Vector2 direction = targetPlayer.position - monsterRigidbody.position;
-        monsterRigidbody.MovePosition(monsterRigidbody.position + (direction.normalized * speed * Time.fixedDeltaTime));
+        monsterRigidbody.MovePosition(monsterRigidbody.position + (direction.normalized * moveSpeed * Time.fixedDeltaTime));
 
         monsterRigidbody.velocity = Vector2.zero;
     }
