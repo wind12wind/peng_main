@@ -1,18 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Animashun : MonoBehaviour
 {
     public Animator penguinA;
-    Rigidbody2D rigid; 
+    public Animator penguinB;
+    //Rigidbody2D rigid; 
     
     public KeyCode key1 = KeyCode.W, S, A, D; 
 
     // Start is called before the first frame update
     void Start()
     {
-        rigid = GetComponent<Rigidbody2D>();
+      //  rigid = GetComponent<Rigidbody2D>();
         penguinA = GetComponent<Animator>(); //초기화 
     }
 
@@ -22,15 +24,19 @@ public class Animashun : MonoBehaviour
 
         if(Input.GetKey(key1) || Input.GetKey(S) || Input.GetKey(A) || Input.GetKey(D)) 
         {
-            // anim2.SetTrigger("Penguin_Walk"); 
+            // anim2.SetTrigger("walk"); 
             penguinA.SetBool("Walk", true);
-           // penguinA.SetTrigger("walk");
         }
         else
         {
            // penguinA.SetTrigger("stand");
             penguinA.SetBool("Walk", false);
-            //anim1.SetTrigger("StandAnimation");
+        }
+
+        if(Input.GetMouseButtonDown(0)) //마우스 왼쪽
+        {
+            penguinA.SetTrigger("Atack");
+     
         }
     }
 }

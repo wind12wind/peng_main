@@ -40393,6 +40393,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   penguinA: {fileID: 809922645}
+  penguinB: {fileID: 809922645}
   key1: 119
   S: 115
   A: 97
