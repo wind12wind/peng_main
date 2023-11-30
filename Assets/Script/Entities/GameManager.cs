@@ -1,10 +1,8 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Threading;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.UIElements;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
@@ -17,7 +15,7 @@ public class GameManager : MonoBehaviour
 
     public GameObject EndPanel;
 
-    [SerializeField] private Text _levelText;
+    [SerializeField] private TextMeshPro _levelText;
     [SerializeField] private Text _currentKillText;
     [SerializeField] private Text _maxKillText;
     [SerializeField] private Text _remainKillText;
