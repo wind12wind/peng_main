@@ -33,6 +33,14 @@ public class CharacterMove : MonoBehaviour
     private void Move(Vector2 direction)
     {
         _MoveDirection = direction;
+        if (_slow != null && _slow.IsPlayerStillInWater())
+        {
+            _Rigidbody.velocity = direction * _slow.slowdownFactor;
+        }
+        else
+        {
+            _Rigidbody.velocity = direction;
+        }
     }
 
     private void ApplyMove(Vector2 direction)
