@@ -14,7 +14,6 @@ public class GameManager : MonoBehaviour
     public static LevelManager Score;
 
     public GameObject Player;
-    public GameObject Monster;
     public GameObject Bullet;
     public GameObject Door;
 
