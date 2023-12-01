@@ -5,11 +5,11 @@ using UnityEngine;
 
 public class Monster : MonoBehaviour
 {
-    protected int monsterType;
+    [SerializeField] protected int monsterType;
 
-    protected float maxHp;
-    protected float currentHp;
-    protected int atk;
+    [SerializeField] protected float maxHp;
+    [SerializeField] protected float currentHp;
+    [SerializeField] protected int atk;
     public float speed;
 
     protected int level;
