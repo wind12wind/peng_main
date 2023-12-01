@@ -6,16 +6,20 @@ using UnityEngine;
 public class Animashun : MonoBehaviour
 {
     public Animator penguinA;
-    public Animator penguinB;
+    public Animator penguinSide; 
+    public GameObject Player;
     //Rigidbody2D rigid; 
     
-    public KeyCode key1 = KeyCode.W, S, A, D; 
+    public KeyCode key1 = KeyCode.W, S, A, D;
+    public KeyCode key2 = KeyCode.Q;
+    public KeyCode key3 = KeyCode.E;
 
     // Start is called before the first frame update
     void Start()
     {
       //  rigid = GetComponent<Rigidbody2D>();
         penguinA = GetComponent<Animator>(); //ÃÊ±âÈ­ 
+        penguinSide = GetComponent<Animator>(); //±ò½ÓÇÏ°Ô ÇÏ³ª ´õ 
     }
 
     // Update is called once per frame
@@ -37,6 +41,17 @@ public class Animashun : MonoBehaviour
         {
             penguinA.SetTrigger("Atack");
      
+        }
+
+        if (Input.GetKeyDown(key2))
+        {
+            penguinSide.SetTrigger("Side");
+        }
+
+        if (Input.GetKeyDown(key3))
+        {
+            Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Player.transform.position = mousePos;
         }
     }
 }
