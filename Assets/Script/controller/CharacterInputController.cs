@@ -31,6 +31,10 @@ public class CharacterInputController : CharacterController
             CallLookEvent(newAim);
         }
     }
+    public void OnAttack(InputValue value)
+    {
+        IsAttacking = value.isPressed;
+    }
 
     public void FlipCharacter(float direction)
     {
@@ -43,9 +47,5 @@ public class CharacterInputController : CharacterController
             transform.localScale = scale;
         }
     }
-    public void OnAttack(InputValue value)
-    {
-        //Debug.Log("OnAttack" + value.ToString());
-        
-    }
+
 }
