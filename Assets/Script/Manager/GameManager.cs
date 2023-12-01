@@ -6,10 +6,6 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
-    private ResourceManager _resource;
-
-    public static ResourceManager Resource { get { return Instance._resource; } }
-
     public GameObject Player;
     public GameObject Monster;
     public GameObject Bullet;

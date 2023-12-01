@@ -12,6 +12,7 @@ public class ResourceManager : MonoBehaviour
     public GameObject Instantiate(string path, Transform parent = null)
     {
         GameObject prefab = Load<GameObject>($"Prefabs/{path}");
+        Debug.Log($"Prefabs/{path}");
         if(prefab == null)
         {
             Debug.Log($"File to load Prefab : {path}");

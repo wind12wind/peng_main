@@ -8,6 +8,10 @@ public class LevelManager : MonoBehaviour
 
     [SerializeField] private GameObject _topUI;
 
+    private ResourceManager _resource;
+
+    public static ResourceManager Resource { get { return Instance._resource; } }
+
     public int Level = 1;
     public int RemainKill = 0;
 
@@ -29,7 +33,7 @@ public class LevelManager : MonoBehaviour
     private void Start()
     {
         Debug.Log("LevelStart");
-        this._topUI = GameManager.Resource.Instantiate("TopUI");
+        this._topUI = LevelManager.Resource.Instantiate("TopUI");
         this._topUI.transform.position = new Vector3(0, 0, 0);
     }
 
