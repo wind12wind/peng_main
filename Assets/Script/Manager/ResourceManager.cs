@@ -4,6 +4,25 @@ using UnityEngine;
 
 public class ResourceManager : MonoBehaviour
 {
+    public static ResourceManager Instance;
+
+    public void Awake()
+    {
+        Debug.Log("ResourceAwake");
+        if (Instance == null)
+        {
+            Debug.Log("ResourceInstantiate");
+            Instance = this;
+        }
+        else if (Instance != this)
+        {
+            Debug.Log("ResourceOnlyOne");
+            Destroy(Instance);
+        }
+
+        DontDestroyOnLoad(Instance);
+    }
+
     public T Load<T>(string path) where T : Object
     {
         return Resources.Load<T>(path);
@@ -11,11 +30,13 @@ public class ResourceManager : MonoBehaviour
 
     public GameObject Instantiate(string path, Transform parent = null)
     {
-        GameObject prefab = Load<GameObject>($"Prefabs/{path}");
         Debug.Log($"Prefabs/{path}");
+
+        GameObject prefab = Resources.Load<GameObject>($"Prefabs/{path}");
         if(prefab == null)
         {
             Debug.Log($"File to load Prefab : {path}");
+            Debug.Log($"null");
             return null;
         }
 

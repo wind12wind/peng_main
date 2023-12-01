@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class LevelUI : LevelManager
+public class TopUI : LevelManager
 {
-    private TextMeshProUGUI _elapsedTimeText;
+    public TextMeshProUGUI _elapsedTimeText;
 
-    private TextMeshProUGUI _levelText;
-    private TextMeshProUGUI _remainKillText;
+    public TextMeshProUGUI _levelText;
+    public TextMeshProUGUI _remainKillText;
 
     // Start is called before the first frame update
     void Start()

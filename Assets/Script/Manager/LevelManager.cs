@@ -10,19 +10,21 @@ public class LevelManager : MonoBehaviour
 
     private ResourceManager _resource;
 
-    public static ResourceManager Resource { get { return Instance._resource; } }
-
-    public int Level = 1;
-    public int RemainKill = 0;
+    public int Level { get; private set; }
+    public int RemainKill { get; private set; }
+    public int Kill { get; private set; }
 
     private void Awake()
     {
+        Debug.Log("LevelAwake");
         if (Instance == null)
         {
+            Debug.Log("LevelInstantiate");
             Instance = this;
         }
         else if (Instance != this)
         {
+            Debug.Log("LevelOnlyOne");
             Destroy(Instance);
         }
 
@@ -32,9 +34,15 @@ public class LevelManager : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
+        Level = 1;
+        RemainKill = 0;
+        Kill = 0;
+
         Debug.Log("LevelStart");
-        this._topUI = LevelManager.Resource.Instantiate("TopUI");
-        this._topUI.transform.position = new Vector3(0, 0, 0);
+
+        _topUI = ResourceManager.Instance.Load<GameObject>("Prefabs/TopUI");
+        _topUI = ResourceManager.Instance.Instantiate("TopUI");
+        _topUI.transform.position = new Vector3(0, 0, 0);
     }
 
     // Update is called once per frame
@@ -45,6 +53,7 @@ public class LevelManager : MonoBehaviour
 
     private void LevelUp()
     {
+        Debug.Log("LevelUp");
         this.Level++;
         this.RemainKill = 10;
     }
@@ -52,8 +61,9 @@ public class LevelManager : MonoBehaviour
     // if a monster killed, call this method
     public void SubtractRemain()
     {
-        GameManager.Instance.Kill++;
-        this.RemainKill--;
+        Debug.Log("AddKill");
+        Kill++;
+        RemainKill--;
 
         if(RemainKill == 0)
         {

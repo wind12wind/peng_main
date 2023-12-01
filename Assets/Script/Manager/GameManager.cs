@@ -1,18 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Resources;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
-    
-    private ResourceManager _resource;
-    private LevelManager _level;
+    //public static LevelManager Level;
+    //public static ResourceManager Resource;
 
-    public static ResourceManager Resource { get { return Instance._resource; } }
-    Debug.Log($"{Resource}");
-    public static LevelManager LvInstance { get { return Instance._level; } }
-    
+    //private ResourceManager _resource;
+    //private LevelManager _level;
+
+    public ResourceManager Resource;// { get { return _resource; } }
+
+    public LevelManager LvInstance;// { get { return _level; } set { Instance._level = value; } }
 
     public GameObject Player;
     public GameObject Monster;
@@ -22,29 +24,31 @@ public class GameManager : MonoBehaviour
     // field for EndPanel
     public GameObject EndPanel;
 
-    public float ElapsedTime;
-    public float BestAliveTime;
-    public float AliveTime;
-    public int BestKill;
-    public int Kill;
+    public float ElapsedTime; //{ get; private set; }
+    public float BestAliveTime { get; private set; }
+    public float AliveTime { get; private set; }
+    public int BestKill { get; private set; }
+    public int Kill { get; private set; }
 
     public bool _isRunning = true;
 
-    //[SerializeField] private Text DayText;
-    //[SerializeField] private Text timeText;
-
     private void Awake()
     {
-        if(Instance == null)
+        if (Instance == null)
         {
             Instance = this;
         }
-        else if(Instance != this)
+        else if (Instance != this)
         {
             Destroy(Instance);
         }
 
         DontDestroyOnLoad(Instance);
+
+        GameObject _level = Resources.Load<GameObject>("Prefabs/LevelManager");
+        GameObject _resource = Resources.Load<GameObject>("Prefabs/ResourceManager");
+        Instantiate(_level);
+        Instantiate(_resource);
     }
 
     // Start is called before the first frame update
@@ -53,10 +57,11 @@ public class GameManager : MonoBehaviour
         ElapsedTime = 0.0f;
         AliveTime = 0;
         Kill = 0;
+        _isRunning = true;
 
         Time.timeScale = 1.0f;
-        //InvokeRepeating("MakeMonster", 0.0f, 1.0f);
-        //InvokeRepeating("MakeBullet", 0.0f, 0.1f);
+        InvokeRepeating("MakeMonster", 0.0f, 2.0f);
+        //InvokeRepeating("MakeBullet", 0.0f, 1.0f);
     }
 
     // Update is called once per frame
@@ -65,6 +70,11 @@ public class GameManager : MonoBehaviour
         if (_isRunning)
         {
             ElapsedTime += Time.deltaTime;
+        }
+
+        if ((ElapsedTime > 10.0f) && _isRunning)
+        {
+            GameOver();
         }
     }
 
@@ -84,17 +94,9 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
-        GameObject endPanel = Resources.Load<GameObject>("Prefabs/endPanel");
+        GameObject endPanel = Resources.Load<GameObject>("Prefabs/EndPanel");
         Instantiate(endPanel);
-
-        EndPanel.SetActive(true);
         Time.timeScale = 0.0f;
+        _isRunning = false;
     }
-
-    //private void MakeTimeStr()
-    //{
-    //    // convert to DateTime format
-    //    DayText.text = DateTime.Now.ToString("yyyy / MM / dd");
-    //    timeText.text = DateTime.Now.ToString("HH : mm : ss");
-    //}
 }
