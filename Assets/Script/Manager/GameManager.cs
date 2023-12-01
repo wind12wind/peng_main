@@ -9,7 +9,6 @@ public class GameManager : MonoBehaviour
     private ResourceManager _resource;
 
     public static ResourceManager Resource { get { return Instance._resource; } }
-    public static LevelManager Score;
 
     public GameObject Player;
     public GameObject Monster;
@@ -24,9 +23,6 @@ public class GameManager : MonoBehaviour
     public float AliveTime;
     public int BestKill;
     public int Kill;
-
-    //field for TopUI
-    public GameObject TopUI;
 
     public bool _isRunning = true;
 
@@ -51,6 +47,8 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         ElapsedTime = 0.0f;
+        AliveTime = 0;
+        Kill = 0;
 
         Time.timeScale = 1.0f;
         //InvokeRepeating("MakeMonster", 0.0f, 1.0f);
