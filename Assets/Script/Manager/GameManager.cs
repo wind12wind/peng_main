@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     public static LevelManager Score;
 
     public GameObject Player;
+    public GameObject Monster;
     public GameObject Bullet;
     public GameObject Door;
 
@@ -28,8 +29,6 @@ public class GameManager : MonoBehaviour
 
     //field for TopUI
     public GameObject TopUI;
-
-    public 
 
     public bool _isRunning = true;
 
