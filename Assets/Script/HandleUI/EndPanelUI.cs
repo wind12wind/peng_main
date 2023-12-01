@@ -13,12 +13,20 @@ public class EndPanelUI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        WriteScore();
     }
 
     // Update is called once per frame
     void Update()
     {
 
+    }
+
+    private void WriteScore()
+    {
+        _bestTimeText.text = GameManager.Instance.BestAliveTime.ToString("N2");
+        _currentTimeText.text = GameManager.Instance.AliveTime.ToString("N2");
+        _bestKillText.text = GameManager.Instance.BestKill.ToString();
+        _currentKillText.text = GameManager.Instance.Kill.ToString();
     }
 }
