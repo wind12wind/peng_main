@@ -28,6 +28,7 @@ public class LevelManager : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
+        Debug.Log("LevelStart");
         this._topUI = GameManager.Resource.Instantiate("TopUI");
         this._topUI.transform.position = new Vector3(0, 0, 0);
     }
