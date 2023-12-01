@@ -6,7 +6,7 @@ public class LevelManager : MonoBehaviour
 {
     [SerializeField] private GameObject levelUI;
 
-    private int _level = 1;
+    public int _level = 1;
     private int _remainKill = 0;
 
     // Start is called before the first frame update

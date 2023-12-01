@@ -5,15 +5,16 @@ using UnityEngine;
 
 public class Monster : MonoBehaviour
 {
-    public int monsterType;
+    protected int monsterType;
 
-    public float maxHp;
-    public float currentHp;
+    protected float maxHp;
+    protected float currentHp;
+    protected int atk;
     public float speed;
 
-    public int level;
+    protected int level;
 
-    bool isLive;
+    protected bool isLive;
 
     void Start()
     {

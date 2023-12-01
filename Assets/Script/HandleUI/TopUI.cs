@@ -17,10 +17,10 @@ public class LevelUI : LevelManager
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        _elapsedTimeText.text = GameManager.Instance.ElapsedTime.ToString("N2");
-        _levelText.text = LevelManager.Instance._level.ToString();
-        _remainKillText.text = _remainKill.ToString();
-    }
+    //void Update()
+    //{
+    //    _elapsedTimeText.text = GameManager.Instance.ElapsedTime.ToString("N2");
+    //    _levelText.text = LevelManager.Instance._level.ToString();
+    //    _remainKillText.text = _remainKill.ToString();
+    //}
 }

@@ -7,16 +7,18 @@ public class Monster_Skelet : Monster
     private void Awake()
     {
         monsterType = 0;
+
         maxHp = 10;
+        atk = 1;
         speed = 2;
+
         level = 1;
 
-        bool isLive;
-        
     }
 
     void Start()
     {
+        isLive = true;
         currentHp = maxHp;
     }
 
