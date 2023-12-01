@@ -8,8 +8,22 @@ public class LevelManager : MonoBehaviour
 
     [SerializeField] private GameObject _topUI;
 
-    private int _level = 1;
-    private int _remainKill = 0;
+    public int Level = 1;
+    public int RemainKill = 0;
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else if (Instance != this)
+        {
+            Destroy(Instance);
+        }
+
+        DontDestroyOnLoad(Instance);
+    }
 
     // Start is called before the first frame update
     private void Start()
