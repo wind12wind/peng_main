@@ -49,6 +49,6 @@ public class CharacterMove : MonoBehaviour
     public void ResetSpeed()
     {
         // 속도를 원래대로 복구
-        _MoveDirection = _MoveDirection.normalized * normalSpeed;
+        _MoveDirection = _MoveDirection.normalized;
     }
 }
