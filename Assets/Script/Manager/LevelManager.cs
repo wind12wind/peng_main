@@ -4,16 +4,18 @@ using UnityEngine;
 
 public class LevelManager : MonoBehaviour
 {
-    [SerializeField] private GameObject levelUI;
+    public static LevelManager Instance;
 
-    public int _level = 1;
+    [SerializeField] private GameObject _topUI;
+
+    private int _level = 1;
     private int _remainKill = 0;
 
     // Start is called before the first frame update
     private void Start()
     {
-        levelUI = GameManager.Resource.Instantiate("LevelUI");
-        levelUI.transform.position = new Vector3(0, 0, 0);
+        this._topUI = GameManager.Resource.Instantiate("TopUI");
+        this._topUI.transform.position = new Vector3(0, 0, 0);
     }
 
     // Update is called once per frame
@@ -24,17 +26,17 @@ public class LevelManager : MonoBehaviour
 
     private void LevelUp()
     {
-        _level++;
-        _remainKill = 10;
+        this.Level++;
+        this.RemainKill = 10;
     }
 
     // if a monster killed, call this method
     public void SubtractRemain()
     {
         GameManager.Instance.Kill++;
-        _remainKill--;
+        this.RemainKill--;
 
-        if(_remainKill == 0)
+        if(RemainKill == 0)
         {
             LevelUp();
         }
