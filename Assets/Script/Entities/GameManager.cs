@@ -9,7 +9,6 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
 
     public GameObject Player;
-    public GameObject Monster;
     public GameObject Bullet;
     public GameObject Door;
 

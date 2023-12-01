@@ -11,25 +11,26 @@ public class MonsterMove : MonoBehaviour
     Rigidbody2D monsterRigidbody;
 
 
-    private void Awake()
+    public void Awake()
     {
         monsterRigidbody = GetComponent<Rigidbody2D>();
         sprite = GetComponent<SpriteRenderer>();
     }
 
-    private void FixedUpdate()
+    public void FixedUpdate()
     {
-        // 몬스터의 방향
+        // 몬스터의 이동 방향
         Vector2 direction = targetPlayer.position - monsterRigidbody.position;
-        monsterRigidbody.MovePosition(monsterRigidbody.position + (direction.normalized * moveSpeed * Time.fixedDeltaTime));
+        //monsterRigidbody.MovePosition(monsterRigidbody.position + (direction.normalized * moveSpeed * Time.fixedDeltaTime));
 
+        transform.Translate(direction.normalized * moveSpeed * Time.fixedDeltaTime);
         monsterRigidbody.velocity = Vector2.zero;
     }
 
-    private void Update()
+    public void Update()
     {
         // 플레이어 방향으로 쳐다보기
-        // sprite.flipX = targetPlayer.position.x < 0;
-        sprite.flipX = targetPlayer.position.x < monsterRigidbody.position.x;
+        sprite.flipX = targetPlayer.position.x < 0;
+        //sprite.flipX = targetPlayer.position.x < monsterRigidbody.position.x;
     }
 }
