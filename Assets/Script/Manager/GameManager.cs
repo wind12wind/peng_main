@@ -5,6 +5,14 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
+    
+    private ResourceManager _resource;
+    private LevelManager _level;
+
+    public static ResourceManager Resource { get { return Instance._resource; } }
+    Debug.Log($"{Resource}");
+    public static LevelManager LvInstance { get { return Instance._level; } }
+    
 
     public GameObject Player;
     public GameObject Monster;
