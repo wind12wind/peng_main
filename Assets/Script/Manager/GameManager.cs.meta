@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 394f4c04d8c813942b55dc564fb038fd
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - Player: {instanceID: 0}
+  - Monster: {fileID: 6610517655522390151, guid: e5b082eb7389b2842ab442f91a9144a9, type: 3}
+  - Bullet: {instanceID: 0}
+  - Door: {instanceID: 0}
+  - EndPanel: {instanceID: 0}
+  - _levelText: {instanceID: 0}
+  - _currentKillText: {instanceID: 0}
+  - _maxKillText: {instanceID: 0}
+  - _remainKillText: {instanceID: 0}
+  - _elapsedTimeText: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
