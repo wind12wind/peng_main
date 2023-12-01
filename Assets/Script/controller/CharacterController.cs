@@ -24,7 +24,7 @@ public class CharacterController : MonoBehaviour
             _timeSinceLastAttack += Time.deltaTime;
         }
 
-        if (IsAttacking && _timeSinceLastAttack <= 0.2f)
+        if (IsAttacking && _timeSinceLastAttack > 0.2f)
         {
             _timeSinceLastAttack = 0f;
             CallAttackEvent();
