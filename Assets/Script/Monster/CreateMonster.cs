@@ -8,12 +8,10 @@ public class CreateMonster : MonoBehaviour
     public GameObject monsterPrefabs;
     public Transform monsterMakePoint;
 
-    public Monster[] monster;
-
     void Start()
     {
-        InvokeRepeating("MakeMonster", 2f, 2f);
 
+        InvokeRepeating("MakeMonster", 2f, 2f);
     }
 
     void MakeMonster()
