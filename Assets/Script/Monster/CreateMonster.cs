@@ -10,7 +10,7 @@ public class CreateMonster : MonoBehaviour
     public GameObject _level2Monster;
 
     public Transform _monsterMakePoint;
-    private LevelManager _level = new LevelManager();
+    //private LevelManager _level = new LevelManager();
 
     void Start()
     {
@@ -19,11 +19,21 @@ public class CreateMonster : MonoBehaviour
 
     void MakeMonster()
     {
-        switch (_level)
-        {
-            case 1:
-                SpawnMonsterLevel1();
-        }
+                                          // Get 현재레벨 함수();
+        // int currentLevel = _level1Monster.GetCurrentLevel();
+  
+        // 레벨에 따른 몬스터 생성
+        //switch (currentLevel)
+        //{
+        //    case 1:
+        //        SpawnMonsterLevel1();
+        //        break;
+        //    case 2:
+        //        SpawnMonsterLevel2();
+        //        break;
+        //    default:
+        //        break;
+        //}
         GameObject monster = Instantiate(_monsterPrefabs, _monsterMakePoint.position, Quaternion.identity);
         monster.transform.parent = transform;
 
