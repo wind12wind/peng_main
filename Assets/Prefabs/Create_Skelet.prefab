@@ -163,6 +163,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 2.5
+  hp: 0
+  maxHp: 0
   targetPlayer: {fileID: 0}
 --- !u!95 &6331785907713876484
 Animator:
@@ -216,7 +218,7 @@ Transform:
   m_Children:
   - {fileID: 7445417008959182859}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6694305426558397045
 MonoBehaviour:
@@ -232,3 +234,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   monsterPrefabs: {fileID: 2137332419004436232}
   monsterMakePoint: {fileID: 0}
+  monster: []
