@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class MonsterMove : MonoBehaviour
 {
-    [SerializeField] private float moveSpeed;
     public Rigidbody2D targetPlayer;
 
+    Monster monster;
     SpriteRenderer sprite;
     Rigidbody2D monsterRigidbody;
 
@@ -15,6 +15,7 @@ public class MonsterMove : MonoBehaviour
     {
         monsterRigidbody = GetComponent<Rigidbody2D>();
         sprite = GetComponent<SpriteRenderer>();
+        monster = GetComponent<Monster>();
     }
 
     public void FixedUpdate()
@@ -23,7 +24,7 @@ public class MonsterMove : MonoBehaviour
         Vector2 direction = targetPlayer.position - monsterRigidbody.position;
         //monsterRigidbody.MovePosition(monsterRigidbody.position + (direction.normalized * moveSpeed * Time.fixedDeltaTime));
 
-        transform.Translate(direction.normalized * moveSpeed * Time.fixedDeltaTime);
+        transform.Translate(direction.normalized * monster.speed * Time.fixedDeltaTime);
         monsterRigidbody.velocity = Vector2.zero;
     }
 
