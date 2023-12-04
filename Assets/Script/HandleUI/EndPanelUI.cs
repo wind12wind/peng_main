@@ -1,14 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
+using TMPro;
 
 public class EndPanelUI : MonoBehaviour
 {
-    public TextMeshProUGUI _bestTimeText { get; set; }
-    public TextMeshProUGUI _currentTimeText { get; set; }
-    public TextMeshProUGUI _bestKillText { get; set; }
-    public TextMeshProUGUI _currentKillText { get; set; }
+    [SerializeField] private GameObject _EndPanel;
+
+    [SerializeField] private TextMeshProUGUI _bestTimeText;
+    [SerializeField] private TextMeshProUGUI _currentTimeText;
+    [SerializeField] private TextMeshProUGUI _bestKillText;
+    [SerializeField] private TextMeshProUGUI _currentKillText;
 
     // Start is called before the first frame update
     void Start()
@@ -25,7 +27,7 @@ public class EndPanelUI : MonoBehaviour
     private void WriteScore()
     {
         _bestTimeText.text = GameManager.Instance.BestAliveTime.ToString("N2");
-        _currentTimeText.text = GameManager.Instance.AliveTime.ToString("N2");
+        _currentTimeText.text = GameManager.Instance.CurrentTime.ToString("N2");
         _bestKillText.text = GameManager.Instance.BestKill.ToString();
         _currentKillText.text = GameManager.Instance.Kill.ToString();
     }
