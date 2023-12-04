@@ -1,28 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ResourceManager : MonoBehaviour
 {
-    public static ResourceManager Instance;
-
-    public void Awake()
-    {
-        Debug.Log("ResourceAwake");
-        if (Instance == null)
-        {
-            Debug.Log("ResourceInstantiate");
-            Instance = this;
-        }
-        else if (Instance != this)
-        {
-            Debug.Log("ResourceOnlyOne");
-            Destroy(Instance);
-        }
-
-        DontDestroyOnLoad(Instance);
-    }
-
     public T Load<T>(string path) where T : Object
     {
         return Resources.Load<T>(path);

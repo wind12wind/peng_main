@@ -6,10 +6,14 @@ public class FieldManager : MonoBehaviour
 {
     [SerializeField] private GameObject _field;
 
-    // Start is called before the first frame update
-    void Start()
+    public void CreateTileMap(string mapName)
     {
-        ResourceManager.Instance.Instantiate("Prefabs/Field");
+        GameManager.Instance.Resource.Instantiate(mapName);
         _field.transform.position = new Vector3(0, 0, 0);
+    }
+
+    public void OpenNewDoor(int level)
+    {
+
     }
 }

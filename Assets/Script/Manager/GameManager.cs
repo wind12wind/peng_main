@@ -1,10 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
+
+    private FieldManager _field;
+    private ResourceManager _resource;
+    private ScoreManager _score;
+    public ResourceManager Resource { get { return _resource; } }
+    public ScoreManager Score { get { return _score; } }
 
     public GameObject Player;
     public GameObject Monster;
@@ -20,7 +24,7 @@ public class GameManager : MonoBehaviour
     public int BestKill { get; private set; }
     public int Kill { get; private set; }
 
-    public bool _isRunning = true;
+    public bool IsRunning = true;
 
     private void Awake()
     {
@@ -35,18 +39,17 @@ public class GameManager : MonoBehaviour
 
         DontDestroyOnLoad(Instance);
 
-        GameObject resource = Resources.Load<GameObject>("Prefabs/ResourceManager");
-        Instantiate(resource);
+        //GameObject resource = Resources.Load<GameObject>("Prefabs/ResourceManager");
+        //Instantiate(resource);
 
-        GameObject level = Resources.Load<GameObject>("Prefabs/LevelManager");
-        Instantiate(level);
+        _resource.Instantiate("Prefabs/ResourceManager");
 
-        GameObject field = Resources.Load<GameObject>("Prefabs/Field");
-        Instantiate(field);
+        _resource.Instantiate("Prefabs/LevelManager");
 
-        GameObject topUI = Resources.Load<GameObject>("Prefabs/TopUI");
-        Instantiate(topUI);
+        GameObject topUI = _resource.Instantiate("Prefabs/TopUI");
         topUI.transform.position = new Vector3(0, 0, 0);
+
+        _field.CreateTileMap("Prefabs/Field");
     }
 
     // Start is called before the first frame update
@@ -54,7 +57,7 @@ public class GameManager : MonoBehaviour
     {
         CurrentTime = 0.0f;
         Kill = 0;
-        _isRunning = true;
+        IsRunning = true;
 
         Time.timeScale = 1.0f;
         //InvokeRepeating("MakeMonster", 0.0f, 2.0f);
@@ -64,13 +67,13 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (_isRunning)
+        if (IsRunning)
         {
             CurrentTime += Time.deltaTime;
         }
 
         //test for GameOver()
-        if ((CurrentTime > 30.0f) && _isRunning)
+        if ((CurrentTime > 30.0f) && IsRunning)
         {
             GameOver();
         }
@@ -85,7 +88,7 @@ public class GameManager : MonoBehaviour
     }
 
     //test for monster instantiate
-    private void MakeMonster()
+    public void MakeMonster()
     {
         float x = Door.transform.position.x;
         float y = Door.transform.position.y;
@@ -95,13 +98,13 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
         BestAliveTime = (BestAliveTime > CurrentTime) ? BestAliveTime : CurrentTime;
-        Kill = LevelManager.Instance.Kill;
+        Kill = ScoreManager.Instance.Kill;
         BestKill = (BestKill > Kill) ? BestKill : Kill;
 
         GameObject endPanel = Resources.Load<GameObject>("Prefabs/EndPanel");
         Instantiate(endPanel);
 
         Time.timeScale = 0.0f;
-        _isRunning = false;
+        IsRunning = false;
     }
 }

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
@@ -20,7 +18,7 @@ public class TopUI : MonoBehaviour
     void Update()
     {
         _currentTimeText.text = GameManager.Instance.CurrentTime.ToString("N2");
-        _levelText.text = LevelManager.Instance.Level.ToString();
-        _remainKillText.text = LevelManager.Instance.RemainKill.ToString();
+        _levelText.text = GameManager.Instance.Score.Level.ToString();
+        _remainKillText.text = GameManager.Instance.Score.RemainKill.ToString();
     }
 }
