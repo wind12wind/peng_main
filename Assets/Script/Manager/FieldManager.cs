@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FieldManager : MonoBehaviour
+public class FieldManager
 {
-    [SerializeField] private GameObject _field;
+    private GameObject _field;
 
     public void CreateTileMap(string mapName)
     {
-        GameManager.Instance.Resource.Instantiate(mapName);
+        _field = GameManager.Resource.Instantiate(mapName);
         _field.transform.position = new Vector3(0, 0, 0);
     }
 

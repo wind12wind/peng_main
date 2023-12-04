@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class ResourceManager : MonoBehaviour
+public class ResourceManager
 {
     public T Load<T>(string path) where T : Object
     {

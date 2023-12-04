@@ -1,19 +1,21 @@
 using UnityEngine;
 
-public class ScoreManager : MonoBehaviour
+public class ScoreManager
 {
     public int Level { get; private set; }
     public int RemainKill { get; private set; }
     public int Kill { get; private set; }
 
-    // Start is called before the first frame update
-    private void Start()
-    {
-        Level = 1;
-        RemainKill = 0;
-        Kill = 0;
+    private static ScoreManager _instance;
 
-        Debug.Log("ScoreStart");
+    
+
+    // Start is called before the first frame update
+    public ScoreManager(int level, int remainKill, int kill)
+    {
+        Level = level;
+        RemainKill = remainKill;
+        Kill = kill;
     }
 
     private void LevelUp()
