@@ -6,8 +6,10 @@ using UnityEngine;
 public class Shooting : MonoBehaviour
 {
     private CharacterController _controller;
-    [SerializeField] private Transform projectileSpawnPosition;
+    [SerializeField] private Transform SnowBallSpawnPosition;
     private Vector2 _aimDirection = Vector2.right;
+
+    public GameObject SnowBall;
 
     private void Awake()
     {
@@ -29,12 +31,12 @@ public class Shooting : MonoBehaviour
 
     private void OnShoot()
     {
-        CreateProjectile();
+        CreateSnowBall();
     }
 
-    private void CreateProjectile()
+    private void CreateSnowBall()
     {
-        Debug.Log("Fire");
+        Instantiate(SnowBall, SnowBallSpawnPosition.position , Quaternion.identity);
     }
 
     // Update is called once per frame
