@@ -14,12 +14,11 @@ public class slow : MonoBehaviour
         { 
             CharacterMove CharacterMove = collision.GetComponent<CharacterMove>();
 
-            if (CharacterMove != null)
-            {
-                // 플레이어의 속도를 감소시킴
+            //if (CharacterMove != null)
+            //{
                 CharacterMove.ApplySlowdown(slowdownFactor);
-                isInWater = true;
-            }
+            //    isInWater = true;
+            //}
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
@@ -29,18 +28,15 @@ public class slow : MonoBehaviour
           
             CharacterMove CharacterMove = collision.GetComponent<CharacterMove>();
 
-                if (!IsPlayerStillInWater())
-                {
-                   
-                    CharacterMove.ResetSpeed();
-                }
+            CharacterMove.ResetSpeed();
+
         }
     }
-    public bool IsPlayerStillInWater()
-    {
-        // 물위에 있는 상태인지 체크
-        return isInWater;
-    }
+    //public bool IsPlayerStillInWater()
+    //{
+    //    // 물위에 있는 상태인지 체크
+    //    return isInWater;
+    //}
 
 }
 
