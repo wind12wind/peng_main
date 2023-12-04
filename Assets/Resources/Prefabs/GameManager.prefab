@@ -15,7 +15,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &2705317133537180589
 Transform:
@@ -44,11 +44,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 394f4c04d8c813942b55dc564fb038fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Resource: {fileID: 0}
-  LvInstance: {fileID: 0}
-  Player: {fileID: 0}
+  Resource: {fileID: 4900444810522320315, guid: 725e1ee2ea11f964b9a5771695c8ca2c, type: 3}
+  Level: {fileID: 7262431843951984186, guid: 551e7d7665293ee448bc0738e8ac8ca7, type: 3}
+  Player: {fileID: 2153689366230786650, guid: e6947b7c25b7c444c8e8e9af6eae505b, type: 3}
   Monster: {fileID: 2046257384048952286, guid: 47a10a71ebc9c6a47876056dc13e6aa9, type: 3}
   Bullet: {fileID: 83512731760451466, guid: 9c13948ef35028b44a0209283063961b, type: 3}
   Door: {fileID: 8473427376971175438, guid: cdb77ef220ec6cf47be30687aeceaf9b, type: 3}
-  EndPanel: {fileID: 2078097105765619687, guid: 049f6164a15ebe04cba54fbdb582bf57, type: 3}
+  EndPanel: {fileID: 5290717832941096502, guid: 049f6164a15ebe04cba54fbdb582bf57, type: 3}
+  ElapsedTime: 0
   _isRunning: 0

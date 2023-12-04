@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
 
     public ResourceManager Resource;// { get { return _resource; } }
 
-    public LevelManager LvInstance;// { get { return _level; } set { Instance._level = value; } }
+    public LevelManager Level;// { get { return _level; } set { Instance._level = value; } }
 
     public GameObject Player;
     public GameObject Monster;
@@ -22,11 +22,11 @@ public class GameManager : MonoBehaviour
     public GameObject Door;
 
     // field for EndPanel
-    public GameObject EndPanel;
+    [SerializeField] private GameObject EndPanel;
 
-    public float ElapsedTime; //{ get; private set; }
+    // field for player score
+    public float CurrentTime { get; private set; }
     public float BestAliveTime { get; private set; }
-    public float AliveTime { get; private set; }
     public int BestKill { get; private set; }
     public int Kill { get; private set; }
 
@@ -54,13 +54,12 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        ElapsedTime = 0.0f;
-        AliveTime = 0;
+        CurrentTime = 0.0f;
         Kill = 0;
         _isRunning = true;
 
         Time.timeScale = 1.0f;
-        InvokeRepeating("MakeMonster", 0.0f, 2.0f);
+        //InvokeRepeating("MakeMonster", 0.0f, 2.0f);
         //InvokeRepeating("MakeBullet", 0.0f, 1.0f);
     }
 
@@ -69,10 +68,10 @@ public class GameManager : MonoBehaviour
     {
         if (_isRunning)
         {
-            ElapsedTime += Time.deltaTime;
+            CurrentTime += Time.deltaTime;
         }
 
-        if ((ElapsedTime > 10.0f) && _isRunning)
+        if ((CurrentTime > 10.0f) && _isRunning)
         {
             GameOver();
         }
@@ -94,6 +93,10 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
+        BestAliveTime = (BestAliveTime > CurrentTime) ? BestAliveTime : CurrentTime;
+        Kill = LevelManager.Instance.Kill;
+        BestKill = (BestKill > Kill) ? BestKill : Kill;
+
         GameObject endPanel = Resources.Load<GameObject>("Prefabs/EndPanel");
         Instantiate(endPanel);
         Time.timeScale = 0.0f;
