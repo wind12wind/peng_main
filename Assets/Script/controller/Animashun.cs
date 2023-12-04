@@ -2,19 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class Animashun : MonoBehaviour
 {
     public Animator penguinA;
     public Animator penguinSide; 
     public GameObject Player;
+    //public float sidespeed = 2.0f; 
     //Rigidbody2D rigid; 
     
     public KeyCode key1 = KeyCode.W, S, A, D;
     public KeyCode key2 = KeyCode.Q;
     public KeyCode key3 = KeyCode.E;
+    float setTime = 5; //3초
 
-    // Start is called before the first frame update
     void Start()
     {
       //  rigid = GetComponent<Rigidbody2D>();
@@ -22,7 +24,8 @@ public class Animashun : MonoBehaviour
         penguinSide = GetComponent<Animator>(); //깔쌈하게 하나 더 
     }
 
-    // Update is called once per frame
+   
+
     void Update()
     {
 
@@ -46,12 +49,24 @@ public class Animashun : MonoBehaviour
         if (Input.GetKeyDown(key2))
         {
             penguinSide.SetTrigger("Side");
+
         }
+
+            setTime -= Time.deltaTime;
+       // setTime -= Time.deltaTime; // 남은 시간을 감소시켜준다.
 
         if (Input.GetKeyDown(key3))
         {
-            Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            Player.transform.position = mousePos;
+            if (setTime <= 0)
+            {
+                Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                Player.transform.position = mousePos;
+            }
         }
+        else if(setTime <= 0 && Input.GetKeyUp(key3))
+        {
+            setTime = 5;
+        }
+
     }
 }
