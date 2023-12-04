@@ -64750,11 +64750,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   penguinA: {fileID: 809922643}
-  penguinB: {fileID: 809922643}
+  penguinSide: {fileID: 809922643}
+  Player: {fileID: 575407815}
   key1: 119
   S: 115
   A: 97
   D: 100
+  key2: 113
+  key3: 101
 --- !u!1 &867119717
 GameObject:
   m_ObjectHideFlags: 0
@@ -67699,6 +67702,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slowdownFactor: 0.5
+  isInWater: 0
 --- !u!483693784 &1378104669
 TilemapRenderer:
   m_ObjectHideFlags: 0

@@ -11,7 +11,7 @@ public class slow : MonoBehaviour
     public void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Character")) // 플레이어와 충돌했을 때
-        {
+        { 
             CharacterMove CharacterMove = collision.GetComponent<CharacterMove>();
 
             if (CharacterMove != null)
