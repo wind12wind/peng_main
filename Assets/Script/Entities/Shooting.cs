@@ -36,12 +36,16 @@ public class Shooting : MonoBehaviour
 
     private void CreateSnowBall()
     {
-        Instantiate(SnowBall, SnowBallSpawnPosition.position , Quaternion.identity);
+        Instantiate(SnowBall, SnowBallSpawnPosition.position, Quaternion.identity);
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        //투사체가 앞으로 나아가는 로직
+        //방향 , 마우스포인트 값, 객체에 스크립트 생성
+        //벡터 포워드
     }
+
+
 }
