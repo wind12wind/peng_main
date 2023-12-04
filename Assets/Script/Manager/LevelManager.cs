@@ -8,8 +8,6 @@ public class LevelManager : MonoBehaviour
 
     [SerializeField] private GameObject _topUI;
 
-    private ResourceManager _resource;
-
     public int Level { get; private set; }
     public int RemainKill { get; private set; }
     public int Kill { get; private set; }
