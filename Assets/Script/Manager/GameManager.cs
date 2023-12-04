@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
     private ResourceManager _resource;
     private ScoreManager _score;
     public ResourceManager Resource { get { return _resource; } }
-    public ScoreManager Score { get { return _score; } }
+    public ScoreManager Score { get { return _score; } set { _score = value; } }
 
     public GameObject Player;
     public GameObject Monster;
@@ -38,9 +38,6 @@ public class GameManager : MonoBehaviour
         }
 
         DontDestroyOnLoad(Instance);
-
-        //GameObject resource = Resources.Load<GameObject>("Prefabs/ResourceManager");
-        //Instantiate(resource);
 
         _resource.Instantiate("Prefabs/ResourceManager");
 
@@ -98,11 +95,10 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
         BestAliveTime = (BestAliveTime > CurrentTime) ? BestAliveTime : CurrentTime;
-        Kill = ScoreManager.Instance.Kill;
+        Kill = _score.Kill;
         BestKill = (BestKill > Kill) ? BestKill : Kill;
 
-        GameObject endPanel = Resources.Load<GameObject>("Prefabs/EndPanel");
-        Instantiate(endPanel);
+        _resource.Instantiate("Prefabs/EndPanel");
 
         Time.timeScale = 0.0f;
         IsRunning = false;
