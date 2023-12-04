@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class LevelUI : LevelManager
+public class TopUI : LevelManager
 {
-    private TextMeshProUGUI _elapsedTimeText;
+    [SerializeField] private TextMeshProUGUI _currentTimeText;
 
-    private TextMeshProUGUI _levelText;
-    private TextMeshProUGUI _remainKillText;
+    [SerializeField] private TextMeshProUGUI _levelText;
+    [SerializeField] private TextMeshProUGUI _remainKillText;
 
     // Start is called before the first frame update
     void Start()
@@ -19,7 +19,7 @@ public class LevelUI : LevelManager
     // Update is called once per frame
     void Update()
     {
-        _elapsedTimeText.text = GameManager.Instance.ElapsedTime.ToString("N2");
+        _currentTimeText.text = GameManager.Instance.CurrentTime.ToString("N2");
         _levelText.text = LevelManager.Instance.Level.ToString();
         _remainKillText.text = LevelManager.Instance.RemainKill.ToString();
     }
