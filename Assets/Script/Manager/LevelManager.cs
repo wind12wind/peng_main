@@ -37,12 +37,6 @@ public class LevelManager : MonoBehaviour
         Debug.Log("LevelStart");
     }
 
-    // Update is called once per frame
-    private void Update()
-    {
-        
-    }
-
     private void LevelUp()
     {
         Debug.Log("LevelUp");
