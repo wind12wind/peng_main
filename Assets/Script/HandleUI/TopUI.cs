@@ -5,10 +5,10 @@ using TMPro;
 
 public class TopUI : LevelManager
 {
-    public TextMeshProUGUI _elapsedTimeText;
+    [SerializeField] private TextMeshProUGUI _currentTimeText;
 
-    public TextMeshProUGUI _levelText;
-    public TextMeshProUGUI _remainKillText;
+    [SerializeField] private TextMeshProUGUI _levelText;
+    [SerializeField] private TextMeshProUGUI _remainKillText;
 
     // Start is called before the first frame update
     void Start()
@@ -19,7 +19,7 @@ public class TopUI : LevelManager
     // Update is called once per frame
     void Update()
     {
-        _elapsedTimeText.text = GameManager.Instance.ElapsedTime.ToString("N2");
+        _currentTimeText.text = GameManager.Instance.CurrentTime.ToString("N2");
         _levelText.text = LevelManager.Instance.Level.ToString();
         _remainKillText.text = LevelManager.Instance.RemainKill.ToString();
     }

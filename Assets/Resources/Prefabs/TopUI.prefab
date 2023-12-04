@@ -987,7 +987,7 @@ RectTransform:
   - {fileID: 5998444775699222411}
   - {fileID: 6568597454779977642}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1069,7 +1069,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88e82a8a3c187ae4ca3e1998ae84716a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _topUI: {fileID: 0}
+  _topUI: {fileID: 7576497316755957312}
+  _currentTimeText: {fileID: 7541650198518774903}
+  _levelText: {fileID: 3660380280941247218}
+  _remainKillText: {fileID: 8909075120382950921}
 --- !u!1 &8117666628401268798
 GameObject:
   m_ObjectHideFlags: 0
