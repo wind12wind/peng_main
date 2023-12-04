@@ -71,7 +71,7 @@ public class GameManager : MonoBehaviour
             CurrentTime += Time.deltaTime;
         }
 
-        if ((CurrentTime > 10.0f) && _isRunning)
+        if ((CurrentTime > 30.0f) && _isRunning)
         {
             GameOver();
         }

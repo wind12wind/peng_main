@@ -15,10 +15,10 @@ public class CreateMonster : Monster
     [SerializeField] private Transform _monsterLevel2MakePoint;
     [SerializeField] private Transform _monsterLevel3MakePoint;
 
-    private int currentLevel = 1;
-    private bool spawnEnabled = false;
+    //public int currentLevel = LevelManager.Instance.Level;
 
-    //private LevelManager _level = new LevelManager();
+    public int currentLevel = 1; // ½ÇÇè¿ë
+    private bool spawnEnabled = false;
 
     private void Awake()
     {

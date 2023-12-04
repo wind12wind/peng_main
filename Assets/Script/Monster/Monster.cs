@@ -38,17 +38,4 @@ public class Monster : MonoBehaviour
             isDead = true;
         }
     }
-
-    //protected void IsAttacking()
-    //{
-    //    GameObject bullet = Instantiate(monsterBullet, transform.position, Quaternion.identity);
-
-    //    Rigidbody2D randomBullet = bullet.GetComponent<Rigidbody2D>();
-    //    float angle = Random.Range(0f, 360f);
-    //    Vector2 direction = new Vector2(Mathf.Cos(angle * Mathf.Deg2Rad), Mathf.Sin(angle * Mathf.Deg2Rad));
-    //    randomBullet.AddForce(direction * 20f, ForceMode2D.Impulse);
-
-    //    randomBullet.transform.parent = transform;
-    //}
-
 }
