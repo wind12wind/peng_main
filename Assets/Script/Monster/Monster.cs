@@ -1,6 +1,7 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Monster : MonoBehaviour
@@ -10,17 +11,31 @@ public class Monster : MonoBehaviour
     [SerializeField] protected float maxHp;
     [SerializeField] protected float currentHp;
     [SerializeField] protected int atk;
+
+
+    protected float delayTime;
+    protected float atkDelay;
     public float speed;
 
     protected int level;
 
-    protected bool isLive;
+    protected bool isAttacking;
+    protected bool isDead;
 
-    void Start()
+    private void Awake()
+    {
+
+    }
+    private void Start()
     {
         currentHp = maxHp;
     }
 
-
-
+    protected void IsDead()
+    {
+        if (maxHp <= 0)
+        {
+            isDead = true;
+        }
+    }
 }

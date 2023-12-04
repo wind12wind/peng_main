@@ -32896,6 +32896,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: minimapC
       objectReference: {fileID: 0}
+    - target: {fileID: 4024899878888285305, guid: b34e8cc24a2a63c4dbe645ba41dec5bf, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8088221036163129859, guid: b34e8cc24a2a63c4dbe645ba41dec5bf, type: 3}
       propertyPath: m_RootOrder
       value: 3

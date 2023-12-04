@@ -12,13 +12,22 @@ public class Monster_Skelet : Monster
         atk = 1;
         speed = 2;
 
+        atkDelay = 5;
+
         level = 1;
+
+        isAttacking = false;
 
     }
 
     void Start()
     {
-        isLive = true;
+        isDead = false;
         currentHp = maxHp;
+    }
+
+    private void Update()
+    {
+
     }
 }

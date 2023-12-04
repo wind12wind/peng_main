@@ -1,10 +1,9 @@
 fileFormatVersion: 2
-guid: 10b188f4c528d344ea28f1703ba6bdab
+guid: be04ca3ebada8324f976577e32af997d
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences:
-  - monsterBullet: {instanceID: 0}
+  defaultReferences: []
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
