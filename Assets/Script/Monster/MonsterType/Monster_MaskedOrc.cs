@@ -20,10 +20,4 @@ public class Monster_MaskedOrc : Monster
         isLive = true;
         currentHp = maxHp;
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

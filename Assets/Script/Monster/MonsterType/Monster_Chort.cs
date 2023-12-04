@@ -2,20 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Monster_Skelet : Monster
+public class Monster_Chort : Monster
 {
     private void Awake()
     {
-        monsterType = 0;
+        monsterType = 2;
 
-        maxHp = 10;
-        atk = 1;
-        speed = 2;
+        maxHp = 30;
+        atk = 3;
+        speed = 4;
 
-        level = 1;
+        level = 3;
 
     }
-
     void Start()
     {
         isLive = true;

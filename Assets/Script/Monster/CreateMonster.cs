@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -7,66 +8,65 @@ public class CreateMonster : MonoBehaviour
 {
     [SerializeField] private GameObject _level1Monster;
     [SerializeField] private GameObject _level2Monster;
+    [SerializeField] private GameObject _level3Monster;
 
     [SerializeField] private Transform _monsterLevel1MakePoint;
     [SerializeField] private Transform _monsterLevel2MakePoint;
-
+    [SerializeField] private Transform _monsterLevel3MakePoint;
 
     private int currentLevel = 1;
-    private float delayTimeLevel1 = 1f;
-    private float delayTimeLevel2 = 2f;
-
+    private bool spawnEnabled = true;
 
     //private LevelManager _level = new LevelManager();
 
     private void Awake()
     {
-        InvokeRepeating("LevelUp", 5f, 5f);
-    }
 
+    }
     void Start()
     {
-        _level2Monster.SetActive(false);
+        Invoke("LevelUp", 5f);
 
-        StartCoroutine(MakeMonster());
+        InvokeRepeating("MakeMonsterLevel1", 2f, 2f);
+        _level1Monster.SetActive(true);
     }
 
-    IEnumerator MakeMonster()
+    private void Update()
     {
-        while (true)
+
+        if (currentLevel >= 2 && spawnEnabled)
         {
-            if (currentLevel == 1)
-            {
-                SpawnMonsterLevel1();
-                yield return new WaitForSeconds(delayTimeLevel1);
-            }
-            else if (currentLevel >= 2)
-            {
-                _level2Monster.SetActive(true);
-                SpawnMonsterLevel1();
-                Debug.Log("1레벨 소환");
-                yield return new WaitForSeconds(delayTimeLevel1);
-                SpawnMonsterLevel2();
-                Debug.Log("2레벨 소환");
-                yield return new WaitForSeconds(delayTimeLevel2);
-            }
-        
+            //Invoke("SpawnMonsterLevel2", 2f);
+            Debug.Log("2레벨 몬스터가 등장합니다");
+            //Invoke("MakeMonsterLevel2", 2f);
+            InvokeRepeating("SpawnMonsterLevel2", 4f, 4f);
 
-
-            //GameObject monster = Instantiate(_monsterPrefabs, _monsterMakePoint.position, Quaternion.identity);
-            //monster.transform.parent = transform;
-
-            //MonsterMove monsterMove = monster.GetComponent<MonsterMove>();
-            //if (monsterMove != null)
-            //{
-            //    monsterMove.targetPlayer.AddComponent<MonsterMove>();
-            //}
+            _level2Monster.SetActive(true);
+            spawnEnabled = false;
         }
+        else if (currentLevel >= 3 && spawnEnabled)
+        {
+
+        }
+
     }
+
+    void MakeMonsterLevel1()
+    {
+        SpawnMonsterLevel1();
+        Debug.Log("1레벨 소환");
+    }
+
+    void MakeMonsterLevel2()
+    {
+        InvokeRepeating("SpawnMonsterLevel2", 0f, 3f);
+    }
+
     void LevelUp()
     {
         Debug.Log("레벨업");
-        currentLevel = 2;
+        currentLevel++;
+        Debug.Log(currentLevel);
     }
     void SpawnMonsterLevel1()
     {
@@ -76,6 +76,7 @@ public class CreateMonster : MonoBehaviour
 
     void SpawnMonsterLevel2()
     {
+        Debug.Log("2레벨 소환");
         GameObject monster = Instantiate(_level2Monster, _monsterLevel2MakePoint.position, Quaternion.identity);
         monster.transform.parent = transform;
     }
