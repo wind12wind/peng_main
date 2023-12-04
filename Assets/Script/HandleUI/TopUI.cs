@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class TopUI : LevelManager
+public class TopUI : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI _currentTimeText;
 
