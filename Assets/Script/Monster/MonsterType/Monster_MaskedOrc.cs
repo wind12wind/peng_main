@@ -12,12 +12,22 @@ public class Monster_MaskedOrc : Monster
         atk = 2;
         speed = 3;
 
+        atkDelay = 6;
+
         level = 2;
+
+        isAttacking = false;
 
     }
     void Start()
     {
-        isLive = true;
+        isDead = false;
         currentHp = maxHp;
+        delayTime = 0;
+    }
+
+    private void Update()
+    {
+
     }
 }

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Monster_Chort : Monster
 {
+
     private void Awake()
     {
         monsterType = 2;
@@ -12,12 +13,21 @@ public class Monster_Chort : Monster
         atk = 3;
         speed = 4;
 
+        atkDelay = 7;
+
         level = 3;
+
+        isAttacking = false;
 
     }
     void Start()
     {
-        isLive = true;
+        isDead = false ;
         currentHp = maxHp;
+    }
+
+    private void Update()
+    {
+
     }
 }

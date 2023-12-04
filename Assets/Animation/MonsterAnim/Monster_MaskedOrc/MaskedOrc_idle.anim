@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Skelet_idle
+  m_Name: MaskedOrc_idle
   serializedVersion: 7
   m_Legacy: 0
   m_Compressed: 0
@@ -21,13 +21,13 @@ AnimationClip:
   - serializedVersion: 2
     curve:
     - time: 0
-      value: {fileID: 21300000, guid: 881e4aa8a15d9b24f95c7cb09f0ac89d, type: 3}
+      value: {fileID: 21300000, guid: 094fb96aa318b2a448d3af0779f0c386, type: 3}
     - time: 0.16666667
-      value: {fileID: 21300000, guid: 77f7a5a4b7101d143b33de4db79612be, type: 3}
+      value: {fileID: 21300000, guid: 8b4bbc039aa888547832a959ad4bb720, type: 3}
     - time: 0.33333334
-      value: {fileID: 21300000, guid: b50b1a11174f3c245a09d630acf4ca3d, type: 3}
+      value: {fileID: 21300000, guid: 27080679aceaea349825fe177969e2ee, type: 3}
     - time: 0.5
-      value: {fileID: 21300000, guid: 1fef028e1ddfc7d4b9eb2b21003f4577, type: 3}
+      value: {fileID: 21300000, guid: 390eeec14f88eb545928000b74646eda, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -50,10 +50,10 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     pptrCurveMapping:
-    - {fileID: 21300000, guid: 881e4aa8a15d9b24f95c7cb09f0ac89d, type: 3}
-    - {fileID: 21300000, guid: 77f7a5a4b7101d143b33de4db79612be, type: 3}
-    - {fileID: 21300000, guid: b50b1a11174f3c245a09d630acf4ca3d, type: 3}
-    - {fileID: 21300000, guid: 1fef028e1ddfc7d4b9eb2b21003f4577, type: 3}
+    - {fileID: 21300000, guid: 094fb96aa318b2a448d3af0779f0c386, type: 3}
+    - {fileID: 21300000, guid: 8b4bbc039aa888547832a959ad4bb720, type: 3}
+    - {fileID: 21300000, guid: 27080679aceaea349825fe177969e2ee, type: 3}
+    - {fileID: 21300000, guid: 390eeec14f88eb545928000b74646eda, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
