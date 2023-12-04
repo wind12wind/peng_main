@@ -15,7 +15,7 @@ public class Animashun : MonoBehaviour
     public KeyCode key1 = KeyCode.W, S, A, D;
     public KeyCode key2 = KeyCode.Q;
     public KeyCode key3 = KeyCode.E;
-
+    float setTime = 5; //3ÃÊ
 
     void Start()
     {
@@ -24,7 +24,7 @@ public class Animashun : MonoBehaviour
         penguinSide = GetComponent<Animator>(); //±ò½ÓÇÏ°Ô ÇÏ³ª ´õ 
     }
 
-    float setTime = 5; //3ÃÊ
+   
 
     void Update()
     {
@@ -61,7 +61,6 @@ public class Animashun : MonoBehaviour
             {
                 Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 Player.transform.position = mousePos;
-                
             }
         }
         else if(setTime <= 0 && Input.GetKeyUp(key3))
