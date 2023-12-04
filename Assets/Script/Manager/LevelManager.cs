@@ -6,8 +6,6 @@ public class LevelManager : MonoBehaviour
 {
     public static LevelManager Instance;
 
-    [SerializeField] private GameObject _topUI;
-
     public int Level { get; private set; }
     public int RemainKill { get; private set; }
     public int Kill { get; private set; }
@@ -37,10 +35,6 @@ public class LevelManager : MonoBehaviour
         Kill = 0;
 
         Debug.Log("LevelStart");
-
-        _topUI = ResourceManager.Instance.Load<GameObject>("Prefabs/TopUI");
-        _topUI = ResourceManager.Instance.Instantiate("TopUI");
-        _topUI.transform.position = new Vector3(0, 0, 0);
     }
 
     // Update is called once per frame

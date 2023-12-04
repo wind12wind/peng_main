@@ -1,20 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Resources;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
-    //public static LevelManager Level;
-    //public static ResourceManager Resource;
-
-    //private ResourceManager _resource;
-    //private LevelManager _level;
-
-    public ResourceManager Resource;// { get { return _resource; } }
-
-    public LevelManager Level;// { get { return _level; } set { Instance._level = value; } }
 
     public GameObject Player;
     public GameObject Monster;
@@ -45,10 +35,18 @@ public class GameManager : MonoBehaviour
 
         DontDestroyOnLoad(Instance);
 
-        GameObject _level = Resources.Load<GameObject>("Prefabs/LevelManager");
-        GameObject _resource = Resources.Load<GameObject>("Prefabs/ResourceManager");
-        Instantiate(_level);
-        Instantiate(_resource);
+        GameObject resource = Resources.Load<GameObject>("Prefabs/ResourceManager");
+        Instantiate(resource);
+
+        GameObject level = Resources.Load<GameObject>("Prefabs/LevelManager");
+        Instantiate(level);
+
+        GameObject field = Resources.Load<GameObject>("Prefabs/Field");
+        Instantiate(field);
+
+        GameObject topUI = Resources.Load<GameObject>("Prefabs/TopUI");
+        Instantiate(topUI);
+        topUI.transform.position = new Vector3(0, 0, 0);
     }
 
     // Start is called before the first frame update
@@ -71,19 +69,22 @@ public class GameManager : MonoBehaviour
             CurrentTime += Time.deltaTime;
         }
 
-        if ((CurrentTime > 10.0f) && _isRunning)
+        //test for GameOver()
+        if ((CurrentTime > 30.0f) && _isRunning)
         {
             GameOver();
         }
     }
 
-    //public void MakeBullet()
-    //{
-    //    float x = Player.transform.position.x;
-    //    float y = Player.transform.position.y + 2.0f;
-    //    Instantiate(Bullet, new Vector3(x, y, 0), Quaternion.identity);
-    //}
+    //test for bullet instantiate
+    public void MakeBullet()
+    {
+        float x = Player.transform.position.x;
+        float y = Player.transform.position.y + 2.0f;
+        Instantiate(Bullet, new Vector3(x, y, 0), Quaternion.identity);
+    }
 
+    //test for monster instantiate
     private void MakeMonster()
     {
         float x = Door.transform.position.x;
@@ -99,6 +100,7 @@ public class GameManager : MonoBehaviour
 
         GameObject endPanel = Resources.Load<GameObject>("Prefabs/EndPanel");
         Instantiate(endPanel);
+
         Time.timeScale = 0.0f;
         _isRunning = false;
     }
