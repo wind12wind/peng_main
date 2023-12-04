@@ -7,7 +7,8 @@ public class CharacterMove : MonoBehaviour
 {
     private slow _slow;
     private CharacterController _controller;
-    private Vector2 _MoveDirection = Vector2.zero;
+    private Vector2 _MoveDirection = Vector2.zero; 
+    private float _Speed = 1f;
     private Rigidbody2D _Rigidbody;
     public static float normalSpeed = 9.0f;
 
@@ -21,7 +22,7 @@ public class CharacterMove : MonoBehaviour
 
     private void Start()
     {
-        _controller.OnMoveEvent += Move;
+        _controller.OnMoveEvent += ApplyMove;
       
     }
 
@@ -30,33 +31,34 @@ public class CharacterMove : MonoBehaviour
         ApplyMove(_MoveDirection);
     }
 
-    private void Move(Vector2 direction)
-    {
-        _MoveDirection = direction;
-        if (_slow != null && _slow.IsPlayerStillInWater())
-        {
-            _Rigidbody.velocity = direction * _slow.slowdownFactor;
-        }
-        else
-        {
-            _Rigidbody.velocity = direction;
-        }
-    }
+    //private void Move(Vector2 direction)
+    //{
+    //    _MoveDirection = direction;
+    //    if (_slow != null && _slow.IsPlayerStillInWater())
+    //    {
+    //        _Rigidbody.velocity = direction * _slow.slowdownFactor;
+    //    }
+    //    else
+    //    {
+    //        _Rigidbody.velocity = direction;
+    //    }
+    //}
 
     private void ApplyMove(Vector2 direction)
     {
-        direction = direction * normalSpeed;
+        _MoveDirection = direction;
+        direction = direction * normalSpeed * _Speed;
         _Rigidbody.velocity = direction;
     }
     public void ApplySlowdown(float slowdownFactor)
     {
         // 물에서의 속도 감소 적용
-        _MoveDirection *= slowdownFactor;
+        _Speed = slowdownFactor; //변화되는 장소를 찾아서 확인해보자.
     }
 
     public void ResetSpeed()
     {
         // 속도를 원래대로 복구
-        _MoveDirection = _MoveDirection.normalized;
+        _Speed = 1f;
     }
 }
