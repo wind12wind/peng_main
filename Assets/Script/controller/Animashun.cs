@@ -27,8 +27,6 @@ public class Animashun : MonoBehaviour
         penguinSide = GetComponent<Animator>(); //깔쌈하게 하나 더 
     }
 
-   
-
     void Update()
     {
 
@@ -68,7 +66,7 @@ public class Animashun : MonoBehaviour
         }
 
 
-        // setTime -= Time.deltaTime; // 남은 시간을 감소시켜준다.
+         setTime -= Time.deltaTime; // 남은 시간을 감소시켜준다.
 
         if (Input.GetKeyDown(key3))
         {
