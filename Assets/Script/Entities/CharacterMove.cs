@@ -9,7 +9,7 @@ public class CharacterMove : MonoBehaviour
     private CharacterController _controller;
     private Vector2 _MoveDirection = Vector2.zero;
     private Rigidbody2D _Rigidbody;
-    public float normalSpeed = 0.9f;
+    public static float normalSpeed = 9.0f;
 
     private void Awake()
     {

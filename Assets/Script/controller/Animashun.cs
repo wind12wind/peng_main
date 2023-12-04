@@ -3,19 +3,22 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UIElements;
 
 public class Animashun : MonoBehaviour
 {
     public Animator penguinA;
     public Animator penguinSide; 
     public GameObject Player;
-    //public float sidespeed = 2.0f; 
-    //Rigidbody2D rigid; 
     
+
     public KeyCode key1 = KeyCode.W, S, A, D;
     public KeyCode key2 = KeyCode.Q;
     public KeyCode key3 = KeyCode.E;
-    float setTime = 5; //3초
+
+    float setTime = 1; //점멸 첫 시간 
+    float sideTime = 1; //슬라이딩 진행시간 1초
+    float sideCool = 0;
 
     void Start()
     {
@@ -46,14 +49,26 @@ public class Animashun : MonoBehaviour
      
         }
 
-        if (Input.GetKeyDown(key2))
-        {
-            penguinSide.SetTrigger("Side");
+        sideCool -= Time.deltaTime; //슬라이딩 쿨타임 
+        sideTime -= Time.deltaTime; //슬라이딩 제한시간 지속 마이너스 
 
+        if (Input.GetKeyDown(key2)) //&& sideCool <= 0)
+        {
+            sideTime = 1; //버튼 누르면 지속시간 1초 플러스 
+            if (sideTime > 0)
+            {
+                penguinSide.SetTrigger("Side");
+                CharacterMove.normalSpeed = 20.0f;
+            }
+        }
+        else if (sideTime <= 0) //애니메이션 지속 끝나면? 
+        {
+            CharacterMove.normalSpeed = 9.0f;
+            sideCool = 3;
         }
 
-            setTime -= Time.deltaTime;
-       // setTime -= Time.deltaTime; // 남은 시간을 감소시켜준다.
+
+        // setTime -= Time.deltaTime; // 남은 시간을 감소시켜준다.
 
         if (Input.GetKeyDown(key3))
         {
@@ -65,7 +80,7 @@ public class Animashun : MonoBehaviour
         }
         else if(setTime <= 0 && Input.GetKeyUp(key3))
         {
-            setTime = 5;
+            setTime = 5; //점멸시간 5초 ㄱㄷ
         }
 
     }
