@@ -47,9 +47,8 @@ MonoBehaviour:
   Resource: {fileID: 4900444810522320315, guid: 725e1ee2ea11f964b9a5771695c8ca2c, type: 3}
   Level: {fileID: 7262431843951984186, guid: 551e7d7665293ee448bc0738e8ac8ca7, type: 3}
   Player: {fileID: 2153689366230786650, guid: e6947b7c25b7c444c8e8e9af6eae505b, type: 3}
-  Monster: {fileID: 2046257384048952286, guid: 47a10a71ebc9c6a47876056dc13e6aa9, type: 3}
+  Monster: {fileID: 2552377975546525486, guid: a72fdd9ee91bfee4a9d72401d1dde205, type: 3}
   Bullet: {fileID: 83512731760451466, guid: 9c13948ef35028b44a0209283063961b, type: 3}
   Door: {fileID: 8473427376971175438, guid: cdb77ef220ec6cf47be30687aeceaf9b, type: 3}
   EndPanel: {fileID: 5290717832941096502, guid: 049f6164a15ebe04cba54fbdb582bf57, type: 3}
-  ElapsedTime: 0
   _isRunning: 0
