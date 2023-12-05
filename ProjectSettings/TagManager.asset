@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Character
   - Monster
+  - BulletTrap
   layers:
   - Default
   - TransparentFX
@@ -13,9 +14,9 @@ TagManager:
   - ninimapYellow
   - Water
   - UI
-  - 
-  - 
-  - 
+  - Player
+  - Monster
+  - BulletTrap
   - 
   - 
   - 

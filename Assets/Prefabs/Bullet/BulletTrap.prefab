@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6246431077844591487}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BulletLevel2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41,8 +41,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9039596157874756739}
   - component: {fileID: 5750524383373431502}
-  - component: {fileID: 5401026574634959491}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BulletTrap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -92,33 +91,7 @@ MonoBehaviour:
   level3Pos: {fileID: 8623015559284568396}
   level4Pos: {fileID: 2042861378092202641}
   bulletRigid: {fileID: 0}
---- !u!50 &5401026574634959491
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2857686043953825352}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
+  currentLevel: 1
 --- !u!1 &3698685592629505597
 GameObject:
   m_ObjectHideFlags: 0
@@ -128,7 +101,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8623015559284568396}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BulletLevel3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -159,7 +132,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1747982525567705456}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BulletLevel1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -190,7 +163,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2042861378092202641}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BulletLevel4
   m_TagString: Untagged
   m_Icon: {fileID: 0}

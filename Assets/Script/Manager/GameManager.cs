@@ -103,7 +103,7 @@ public class GameManager : MonoBehaviour
         }
 
         //test for GameOver()
-        if ((CurrentTime > 30.0f) && IsRunning)
+        if ((CurrentTime > 60.0f) && _isRunning)
         {
             GameOver();
         }
