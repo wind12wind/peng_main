@@ -5,6 +5,7 @@ public class GameManager : MonoBehaviour
     public static GameManager _instance;
     public static GameManager Instance { get { return _instance; } }
 
+    // ResourceManager Singleton
     private static ResourceManager _resource = new ResourceManager();
     public static ResourceManager Resource
     {
@@ -17,6 +18,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    // ScoreManager Singleton
     private static ScoreManager _score = new ScoreManager(1, 10, 0);
     public static ScoreManager Score
     {
@@ -33,6 +35,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    // FieldManager Singleton
     private static FieldManager _field = new FieldManager();
     public static FieldManager Field
     {
@@ -45,6 +48,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    // field for test
     public GameObject Player;
     public GameObject Monster;
     public GameObject Bullet;
@@ -58,11 +62,7 @@ public class GameManager : MonoBehaviour
 
     public bool IsRunning = true;
 
-    private void Awake()
-    {
-        Init();
-    }
-
+    // GameManager Singleton
     private void Init()
     {
         if(_instance == null)
@@ -76,6 +76,11 @@ public class GameManager : MonoBehaviour
             DontDestroyOnLoad(gameObject);
             _instance = gameObject.GetComponent<GameManager>();
         }
+    }
+
+    private void Awake()
+    {
+        Init();
     }
 
     // Start is called before the first frame update
@@ -135,5 +140,15 @@ public class GameManager : MonoBehaviour
 
         Time.timeScale = 0.0f;
         IsRunning = false;
+    }
+
+    public void PauseGame()
+    {
+
+    }
+
+    public void ResumGame()
+    {
+
     }
 }
