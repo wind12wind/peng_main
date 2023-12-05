@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class ItemSpawn : MonoBehaviour
 {
@@ -32,7 +33,7 @@ public class ItemSpawn : MonoBehaviour
             spawnTimer = 0;
             PotionRandomSpawn();
         }
-        if (itemBoxTimer >= 20f)
+        if (itemBoxTimer >= 5f)
         {
             itemBoxTimer = 0;
             ItemBoxSpawn();

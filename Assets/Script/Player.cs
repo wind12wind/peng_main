@@ -13,7 +13,7 @@ public class Player : MonoBehaviour
     private int maxHp;
     public int currentHp;
     private int maxMp;
-    private int currentMp;
+    public int currentMp;
 
     private bool isDead;
 
@@ -23,7 +23,7 @@ public class Player : MonoBehaviour
         maxHp = 100;
         currentHp = 30;
         maxMp = 100;
-        currentMp = 100;
+        currentMp = 30;
 
         isDead = false;
     }
