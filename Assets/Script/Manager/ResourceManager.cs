@@ -7,14 +7,14 @@ public class ResourceManager
         return Resources.Load<T>(path);
     }
 
-    public GameObject Instantiate(string path, Transform parent = null)
+    public GameObject Instantiate(string path, string name, Transform parent = null)
     {
-        Debug.Log($"Prefabs/{path}");
+        Debug.Log($"{path}/{name}");
 
-        GameObject prefab = Resources.Load<GameObject>($"Prefabs/{path}");
+        GameObject prefab = Resources.Load<GameObject>($"{path}/{name}");
         if(prefab == null)
         {
-            Debug.Log($"File to load Prefab : {path}");
+            Debug.Log($"File to load Prefab : {path}/{name}");
             Debug.Log($"null");
             return null;
         }
