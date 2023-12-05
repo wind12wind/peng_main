@@ -9,25 +9,21 @@ public class Monster_Chort : Monster
     {
         monsterType = 2;
 
-        maxHp = 30;
-        atk = 3;
-        speed = 4;
-
-        atkDelay = 7;
-
+        Hp = 30;
+        speed = 7;
         level = 3;
-
-        isAttacking = false;
 
     }
     void Start()
     {
         isDead = false ;
-        currentHp = maxHp;
     }
 
     private void Update()
     {
-
+        if(Hp <= 0)
+        {
+            MonsterIsDead();
+        }
     }
 }

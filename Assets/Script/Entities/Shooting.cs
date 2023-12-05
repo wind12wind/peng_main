@@ -8,6 +8,7 @@ public class Shooting : MonoBehaviour
     private CharacterController _controller;
     [SerializeField] private Transform SnowBallSpawnPosition;
     private Vector2 _aimDirection = Vector2.right;
+    [SerializeField] private SpriteRenderer characterRenderer;
 
     public GameObject SnowBall;
 
@@ -21,6 +22,7 @@ public class Shooting : MonoBehaviour
     {
         _controller.OnAttackEvent += OnShoot;
         _controller.OnLookEvent += OnAim;
+        _controller.OnMoveEvent += OnMoveRotation;
 
     }
 
@@ -42,10 +44,19 @@ public class Shooting : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //투사체가 앞으로 나아가는 로직
-        //방향 , 마우스포인트 값, 객체에 스크립트 생성
-        //벡터 포워드
+
+    }
+    private void OnMoveRotation(Vector2 newMoveDirection)
+    {
+        RotateCharacter(newMoveDirection);
     }
 
+    private void RotateCharacter(Vector2 direction)
+    {
 
+        if (direction.x != 0)
+        {
+            characterRenderer.flipX = direction.x < 0;
+        }
+    }
 }

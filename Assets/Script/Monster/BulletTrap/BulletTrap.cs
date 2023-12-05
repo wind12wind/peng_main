@@ -2,33 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BulletTrap : Bullet
+public class BulletTrap : MonoBehaviour
 {
-    [SerializeField] private Transform targetPlayer;
+    public static BulletTrap _bulletTrap;
 
-    [SerializeField] private GameObject level1Bullet;
-    [SerializeField] private GameObject level2Bullet;
-    [SerializeField] private GameObject level3Bullet;
-    [SerializeField] private GameObject level4Bullet;
+    [SerializeField] private GameObject[] bullets;
+    [SerializeField] private Transform[] bulletPositions;
+    [SerializeField] private Bullet[] bulletLevel;
 
-    [SerializeField] private Transform level1Pos;
-    [SerializeField] private Transform level2Pos;
-    [SerializeField] private Transform level3Pos;
-    [SerializeField] private Transform level4Pos;
+    [SerializeField] private Transform playerPos;
 
-    public Rigidbody2D bulletRigid;
-    Transform playerPos;
+    private Rigidbody2D _bulletRigid;
 
-    private float attackTime = 2f;
-    private float attackDealy;
+    private float[] attackTimes = { 1f, 2f, 2.5f, 3f };
+    private float[] attackDelays = { 0f, 0f, 0f, 0f };
 
     public int currentLevel = 1;
 
     private void Awake()
     {
-        bulletAtk = 0;
-        bulletSpeed = 0f;
-
         Invoke("LevelUp", 10f);
         Invoke("LevelUp", 20f);
         Invoke("LevelUp", 30f);
@@ -37,101 +29,35 @@ public class BulletTrap : Bullet
 
     void Start()
     {
-        attackDealy = 0f;
-        level1Bullet.SetActive(true);
+
     }
 
     void Update()
     {
-        attackDealy += Time.deltaTime;
-        while (true)
+        for (int i = 0; i < attackTimes.Length; i++)
         {
-            if (attackDealy >= attackTime)
-            {
-                if (currentLevel >= 1)
-                {
-                    BulletLevel1();
-                }
-                if (currentLevel >= 2)
-                {
-                    BulletLevel2();
-                }
-                if (currentLevel >= 3)
-                {
-                    BulletLevel3();
-                }
-                if (currentLevel >= 4)
-                {
-                    BulletLevel4();
-                }
+            attackDelays[i] += Time.deltaTime;
 
+            if (attackDelays[i] >= attackTimes[i] && currentLevel >= i + 1)
+            {
+                ShootBullet(i + 1);
+                attackDelays[i] = 0f;
             }
-            break;
         }
     }
-
-    void BulletLevel1()
+    void ShootBullet(int level)
     {
-        attackDealy = 0f;
-        bulletAtk = 5;
-        bulletSpeed = 10f;
+        float bulletSpeed = bulletLevel[level - 1].speed;
+        float bulletAtk = bulletLevel[level - 1].atk;
 
-        GameObject bullet = Instantiate(level1Bullet, level1Pos.position, Quaternion.identity);
-      
-        Rigidbody2D randomBullet = bullet.GetComponent<Rigidbody2D>();
-        float angle = Random.Range(0f, 360f);
-        Vector2 direction = new Vector2(Mathf.Cos(angle * Mathf.Deg2Rad), Mathf.Sin(angle * Mathf.Deg2Rad));
-        randomBullet.AddForce(direction * bulletSpeed, ForceMode2D.Impulse);
+        GameObject bullet = Instantiate(bullets[level -1], bulletPositions[level -1].position, Quaternion.identity);
+        _bulletRigid = bullet.GetComponent<Rigidbody2D>();
 
-        randomBullet.transform.parent = transform;
-    }
+        Vector2 direction = (Vector2)playerPos.position - (Vector2)bulletPositions[level -1].position;
+        direction.Normalize();
 
-    void BulletLevel2()
-    {
-        attackDealy = 0f;
-        bulletAtk = 7;
-        bulletSpeed = 20f;
-
-        GameObject bullet = Instantiate(level2Bullet, level2Pos.position, Quaternion.identity);
-
-        Rigidbody2D randomBullet = bullet.GetComponent<Rigidbody2D>();
-        float angle = Random.Range(0f, 360f);
-        Vector2 direction = new Vector2(Mathf.Cos(angle * Mathf.Deg2Rad), Mathf.Sin(angle * Mathf.Deg2Rad));
-        randomBullet.AddForce(direction * bulletSpeed, ForceMode2D.Impulse);
-
-        randomBullet.transform.parent = transform;
-    }
-
-    void BulletLevel3()
-    {
-        attackDealy = 0f;
-        bulletAtk = 10;
-        bulletSpeed = 30f;
-
-        GameObject bullet = Instantiate(level3Bullet, level3Pos.position, Quaternion.identity);
-
-        Rigidbody2D randomBullet = bullet.GetComponent<Rigidbody2D>();
-        float angle = Random.Range(0f, 360f);
-        Vector2 direction = new Vector2(Mathf.Cos(angle * Mathf.Deg2Rad), Mathf.Sin(angle * Mathf.Deg2Rad));
-        randomBullet.AddForce(direction * bulletSpeed, ForceMode2D.Impulse);
-
-        randomBullet.transform.parent = transform;
-    }
-
-    void BulletLevel4()
-    {
-        attackDealy = 0f;
-        bulletAtk = 15;
-        bulletSpeed = 40f;
-
-        GameObject bullet = Instantiate(level4Bullet, level4Pos.position, Quaternion.identity);
-
-        Rigidbody2D randomBullet = bullet.GetComponent<Rigidbody2D>();
-        float angle = Random.Range(0f, 360f);
-        Vector2 direction = new Vector2(Mathf.Cos(angle * Mathf.Deg2Rad), Mathf.Sin(angle * Mathf.Deg2Rad));
-        randomBullet.AddForce(direction * bulletSpeed, ForceMode2D.Impulse);
-
-        randomBullet.transform.parent = transform;
+        _bulletRigid.AddForce(direction * bulletSpeed, ForceMode2D.Impulse);
+        _bulletRigid.transform.parent = transform;
     }
 
     void LevelUp()
