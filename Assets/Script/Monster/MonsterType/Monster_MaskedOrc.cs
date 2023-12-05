@@ -8,26 +8,21 @@ public class Monster_MaskedOrc : Monster
     {
         monsterType = 1;
 
-        maxHp = 20;
-        atk = 2;
-        speed = 3;
-
-        atkDelay = 6;
-
+        Hp = 20;
+        speed = 5;
         level = 2;
-
-        isAttacking = false;
 
     }
     void Start()
     {
         isDead = false;
-        currentHp = maxHp;
-        delayTime = 0;
     }
 
     private void Update()
     {
-
+        if (Hp <= 0)
+        {
+            MonsterIsDead();
+        }
     }
 }

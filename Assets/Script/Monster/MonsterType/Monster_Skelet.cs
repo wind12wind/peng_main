@@ -8,26 +8,22 @@ public class Monster_Skelet : Monster
     {
         monsterType = 0;
 
-        maxHp = 10;
-        atk = 1;
-        speed = 2;
-
-        atkDelay = 5;
-
+        Hp = 10;
+        speed = 3;
         level = 1;
-
-        isAttacking = false;
 
     }
 
     void Start()
     {
         isDead = false;
-        currentHp = maxHp;
     }
 
     private void Update()
     {
-
+        if (Hp <= 0)
+        {
+            MonsterIsDead();
+        }
     }
 }
