@@ -7,7 +7,7 @@
             "actions": [
                 {
                     "name": "Retry",
-                    "type": "Value",
+                    "type": "Button",
                     "id": "b2d063bb-c645-477d-9204-463d6b9a0257",
                     "expectedControlType": "Button",
                     "processors": "",
@@ -16,7 +16,7 @@
                 },
                 {
                     "name": "Pause",
-                    "type": "Value",
+                    "type": "Button",
                     "id": "4214eeb0-3b32-49ac-a714-f99115ef4b1d",
                     "expectedControlType": "Button",
                     "processors": "",
@@ -25,7 +25,7 @@
                 },
                 {
                     "name": "Resume",
-                    "type": "Value",
+                    "type": "Button",
                     "id": "e93bebcd-21b2-4e32-b726-02f108b9320f",
                     "expectedControlType": "Button",
                     "processors": "",

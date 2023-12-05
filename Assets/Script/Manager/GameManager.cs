@@ -1,9 +1,10 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager _instance;
-    public static GameManager Instance { get { return _instance; } }
+    public static GameManager Instance { get { return _instance; } set { _instance = value; } }
 
     // ResourceManager Singleton
     private static ResourceManager _resource = new ResourceManager();
@@ -55,19 +56,21 @@ public class GameManager : MonoBehaviour
     public GameObject Door;
 
     // field for player score
-    public float CurrentTime { get; private set; }
+    public float CurrentTime { get; set; }
     public float BestAliveTime { get; private set; }
     public int BestKill { get; private set; }
-    public int Kill { get; private set; }
+    public int Kill { get; set; }
 
-    public bool IsRunning = true;
+    // field for game run
+    public bool IsRunning { get; set; }
+    private GameController _controller;
 
     // GameManager Singleton
     private void Init()
     {
         if(_instance == null)
         {
-            GameObject gameObject = GameObject.Find("GameManager");
+            GameObject gameObject = GameObject.FindGameObjectWithTag("GameManager");
             if(gameObject == null )
             {
                 gameObject = new GameObject { name = "GameManager" };
@@ -81,6 +84,7 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         Init();
+        _controller = GetComponent<GameController>();
     }
 
     // Start is called before the first frame update
@@ -95,6 +99,10 @@ public class GameManager : MonoBehaviour
         _resource.Instantiate("TopUI");
         _field.CreateTileMap("Field");
 
+        _controller.OnRetryEvent += RetryGame;
+        _controller.OnPauseEvent += PauseGame;
+        _controller.OnResumeEvent += ResumeGame;
+
         //InvokeRepeating("MakeMonster", 0.0f, 2.0f);
         //InvokeRepeating("MakeBullet", 0.0f, 1.0f);
     }
@@ -108,7 +116,7 @@ public class GameManager : MonoBehaviour
         }
 
         //test for GameOver()
-        if ((CurrentTime > 60.0f) && IsRunning)
+        if ((CurrentTime > 15.0f) && IsRunning)
         {
             GameOver();
         }
@@ -142,13 +150,27 @@ public class GameManager : MonoBehaviour
         IsRunning = false;
     }
 
-    public void PauseGame()
+    //re-init game data for new game
+    public void RetryGame()
     {
+        //Debug.Log("RetryGame");
+        SceneManager.LoadScene("SampleScene");
 
+        _instance.CurrentTime = 0.0f;
+        _instance.Kill = 0;
+        Time.timeScale = 1.0f;
+        _instance.IsRunning = true;
     }
 
-    public void ResumGame()
+    private void PauseGame()
     {
+        //Debug.Log("PauseGame");
+        Time.timeScale = 0.0f;
+    }
 
+    private void ResumeGame()
+    {
+        //Debug.Log("ResumeGame");
+        Time.timeScale = 1.0f;
     }
 }
