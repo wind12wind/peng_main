@@ -6,8 +6,6 @@ public class ScoreManager
     public int RemainKill { get; private set; }
     public int Kill { get; private set; }
 
-    private static ScoreManager _instance;
-
     // Start is called before the first frame update
     public ScoreManager(int level, int remainKill, int kill)
     {
