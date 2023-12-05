@@ -8,8 +8,6 @@ public class ScoreManager
 
     private static ScoreManager _instance;
 
-    
-
     // Start is called before the first frame update
     public ScoreManager(int level, int remainKill, int kill)
     {
