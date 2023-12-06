@@ -94,11 +94,5 @@ public class Animashun : MonoBehaviour
         {
             penguinDie.SetBool("YouDie", false); //실행 ㄴ
         }
-
-        /*
-        else //if (_player.currentHp > 0) //0보다 클 때
-        {
-            penguinDie.SetTrigger("YouDie"); //노죽음 
-        }*/
     }
 }
