@@ -13,19 +13,34 @@ public class Player : MonoBehaviour
     private int maxHp;
     public int currentHp;
     private int maxMp;
-    private int currentMp;
+    public int currentMp;
+
+
+    public static Player Instance { get; private set; }
 
     private bool isDead;
+
 
     private void Awake()
     {
         atk = 10;
         maxHp = 100;
-        currentHp = 30;
+        currentHp = 100; //이거 사용할게요 
         maxMp = 100;
-        currentMp = 100;
+        currentMp = 30;
 
-        isDead = false;
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+
+       
+
     }
 
     void Start()
