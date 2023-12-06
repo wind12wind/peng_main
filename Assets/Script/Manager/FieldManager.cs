@@ -2,10 +2,22 @@ using UnityEngine;
 
 public class FieldManager : MonoBehaviour
 {
+    public static FieldManager Instance { get; private set; }
+
     private GameObject _field;
 
     private void Awake()
     {
+        //Singleton
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+
         CreateTileMap("Field");
     }
 
