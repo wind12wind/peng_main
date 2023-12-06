@@ -1,17 +1,18 @@
 using UnityEngine;
 
-public class FieldManager
+public class FieldManager : MonoBehaviour
 {
     private GameObject _field;
 
-    public void CreateTileMap(string mapName)
+    private void Awake()
     {
-        //_field = GameManager.Resource.Instantiate("Prefabs", mapName);
-        //_field.transform.position = new Vector3(0, 0, 0);
+        CreateTileMap("Field");
     }
 
-    public void OpenNewDoor(int level)
+    public void CreateTileMap(string mapName)
     {
-
+        _field = Resources.Load<GameObject>($"ManagerAndUI/{mapName}");
+        Instantiate(_field);
+        _field.transform.position = new Vector3(0, 0, 0);
     }
 }
