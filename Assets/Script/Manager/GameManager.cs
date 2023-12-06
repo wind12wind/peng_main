@@ -63,6 +63,7 @@ public class GameManager : MonoBehaviour
         _controller.OnRetryEvent += RetryGame;
         _controller.OnPauseEvent += PauseGame;
         _controller.OnResumeEvent += ResumeGame;
+        _controller.OnInitBestScoreKeyEvent += InitBestScore;
     }
 
     // Update is called once per frame
@@ -114,5 +115,10 @@ public class GameManager : MonoBehaviour
     {
         //Debug.Log("ResumeGame");
         Time.timeScale = 1.0f;
+    }
+
+    private void InitBestScore()
+    {
+        ScoreManager.Score.InitBestScore();
     }
 }

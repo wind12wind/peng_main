@@ -27,4 +27,13 @@ public class GameInputController : GameController
             CallResume();
         }
     }
+
+    public void OnInitBestScoreKey()
+    {
+        //Debug.Log("OnInit");
+        if (!GameManager.Instance.IsRunning)
+        {
+            CallInitScore();
+        }
+    }
 }
