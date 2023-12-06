@@ -4,7 +4,7 @@ public class ScoreManager : MonoBehaviour
 {
     public static ScoreManager Score { get; private set; }
 
-    public int RemainKill { get; private set; }
+    public float RemainTime { get; private set; }
     public int Kill { get; private set; }
 
     private const string BestAliveTimeKey = "BestAliveTime";
@@ -23,21 +23,22 @@ public class ScoreManager : MonoBehaviour
         }
 
         Kill = 0;
-        RemainKill = 10;
+        RemainTime = 10.0f;
 
         GameObject topUI = Resources.Load<GameObject>("ManagerAndUI/TopUI");
         Instantiate(topUI, null);
     }
 
     //test code
-    private void Start()
+    private void Update()
     {
-        InvokeRepeating("ForceKillUp", 1f, 1f);
-    }
+        RemainTime -= Time.deltaTime;
 
-    private void ForceKillUp()
-    {
-        SubtractRemain();
+        if(RemainTime <= 0f)
+        {
+            RemainTime = 10.0f;
+            MonstersManager.Enemy.LevelUp();
+        }
     }
 
     public float LoadBestAliveTime()
@@ -72,16 +73,5 @@ public class ScoreManager : MonoBehaviour
     public void SubtractRemain()
     {
         Kill++;
-
-        if (RemainKill != 0)
-        {
-            RemainKill--;
-            //Debug.Log($"Kill Added, remain Kill = {RemainKill}");
-        }
-        if ( (RemainKill == 0) && (MonstersManager.Enemy.Level < 6) )
-        {
-            RemainKill = 10;
-            MonstersManager.Enemy.LevelUp();
-        }
     }
 }
