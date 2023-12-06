@@ -11,8 +11,8 @@ public class HpPotion : MonoBehaviour
             Player _player = hpPotion.GetComponent<Player>();
             if (_player != null)
             {
-                _player.CurrentHp += 20;
-                Debug.Log($"체력 회복 ! 현재 HP {_player.CurrentHp}");
+                _player.CurrentHp = ((_player.CurrentHp + 20) > 100) ? 100 : _player.CurrentHp + 20;
+                //Debug.Log($"체력 회복 ! 현재 HP {_player.CurrentHp}");
             }
             else
             {

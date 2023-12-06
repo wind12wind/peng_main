@@ -31,7 +31,7 @@ public class Bullet : MonoBehaviour
             {
                 player.CurrentHp -= atk;
                 Destroy(gameObject);
-                Debug.Log($"HP가 {player.CurrentHp} 만큼 남았어!");
+                //Debug.Log($"HP가 {player.CurrentHp} 만큼 남았어!");
             }
         }
     }

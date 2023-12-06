@@ -12,7 +12,7 @@ public class MpPotion : MonoBehaviour
             if (_player != null)
             {
                 _player.CurrentMp += 20;
-                Debug.Log($"마나 회복 ! 현재 MP {_player.CurrentMp}");
+                //Debug.Log($"마나 회복 ! 현재 MP {_player.CurrentMp}");
             }
             else
             {

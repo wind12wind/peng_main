@@ -12,7 +12,7 @@ public class SpeedPotion : MonoBehaviour
             if (_player != null)
             {
                 _player._Speed += 0.2f;
-                Debug.Log($"체력 회복 ! 현재 속도 {_player._Speed}");
+                //Debug.Log($"가속 ! 현재 속도 {_player._Speed}");
             }
             else
             {
