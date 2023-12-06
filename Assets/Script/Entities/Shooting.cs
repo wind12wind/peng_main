@@ -11,10 +11,14 @@ public class Shooting : MonoBehaviour
     [SerializeField] private SpriteRenderer characterRenderer;
 
     public GameObject SnowBall;
+    private Rigidbody2D SnowBallRigid;
+    private float SnowBallSpeed = 10f;
+    private Transform SnowBalls;
 
     private void Awake()
     {
         _controller = GetComponent<CharacterController>();
+        SnowBalls = new GameObject("SnowBalls").transform;
     }
 
     // Start is called before the first frame update
@@ -38,7 +42,12 @@ public class Shooting : MonoBehaviour
 
     private void CreateSnowBall()
     {
-        Instantiate(SnowBall, SnowBallSpawnPosition.position, Quaternion.identity);
+        GameObject SnowBallObject = Instantiate(SnowBall, SnowBallSpawnPosition.position, Quaternion.identity,SnowBalls);
+        SnowBallRigid = SnowBallObject.GetComponent<Rigidbody2D>();
+        if(SnowBallRigid != null)
+        {
+            SnowBallRigid.velocity = _aimDirection.normalized * SnowBallSpeed;
+        }
     }
 
     // Update is called once per frame
@@ -47,6 +56,7 @@ public class Shooting : MonoBehaviour
         //투사체가 앞으로 나아가는 로직
         //방향 , 마우스포인트 값, 객체에 스크립트 생성
         //벡터 포워드
+
     }
 
     private void OnMoveRotation(Vector2 newMoveDirection)
