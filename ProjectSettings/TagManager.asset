@@ -10,6 +10,9 @@ TagManager:
   - Item
   - SnowBall
   - Wall
+  - Managers
+  - EnemyManager
+  - GameManager
   layers:
   - Default
   - TransparentFX
