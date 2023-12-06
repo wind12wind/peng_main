@@ -12,7 +12,7 @@ public class BulletTrap : MonoBehaviour
 
     private Rigidbody2D _bulletRigid;
 
-    private float[] _attackTimes = { 1f, 2f, 2.5f, 3f };
+    private float[] _attackTimes = { 0.5f, 1f, 1.5f, 2f };
     private float[] _attackDelays = { 0f, 0f, 0f, 0f };
 
     private int _level;
