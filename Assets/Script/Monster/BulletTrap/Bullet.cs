@@ -1,7 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.PlasticSCM.Editor.WebApi;
-using UnityEditor.SceneManagement;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
@@ -33,9 +29,9 @@ public class Bullet : MonoBehaviour
             
             if (player != null)
             {
-                player.currentHp -= atk;
+                player.CurrentHp -= atk;
                 Destroy(gameObject);
-                Debug.Log($"HP가 {player.currentHp} 만큼 남았어!");
+                Debug.Log($"HP가 {player.CurrentHp} 만큼 남았어!");
             }
         }
     }

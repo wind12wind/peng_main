@@ -4,8 +4,7 @@ public class Monster : MonoBehaviour
 {
     public static Monster Instance;
 
-    // 몬스터 정보 
-
+    // 몬스터 정보
     [SerializeField] protected int monsterType;
     public int Hp;
     public float speed;
@@ -14,8 +13,6 @@ public class Monster : MonoBehaviour
     public bool isDead;
     protected Animator animator;
 
-
-    
     protected void Awake()
     {
         animator = GetComponent<Animator>();
@@ -39,7 +36,7 @@ public class Monster : MonoBehaviour
         if (SnowBall.CompareTag("SnowBall"))
         {
 
-            int TotalDamage = Player.Instance.atk;
+            int TotalDamage = Player.Instance.Atk;
             Hp -= TotalDamage;
 
             Debug.Log($"체력 {Hp}");
@@ -50,6 +47,5 @@ public class Monster : MonoBehaviour
                 MonsterIsDead();
             }
         }
-
     }
 }

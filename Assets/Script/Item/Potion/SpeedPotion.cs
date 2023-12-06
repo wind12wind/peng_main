@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SpeedPotion : MonoBehaviour
@@ -9,6 +7,7 @@ public class SpeedPotion : MonoBehaviour
         if (speedPotion.CompareTag("Character"))
         {
             Destroy(gameObject);
+
             CharacterMove _player = speedPotion.GetComponent<CharacterMove>();
             if (_player != null)
             {
@@ -19,7 +18,6 @@ public class SpeedPotion : MonoBehaviour
             {
                 Debug.Log($"Player°¡ ¾ø¾î");
             }
-
         }
     }
 }

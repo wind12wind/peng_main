@@ -18,9 +18,6 @@ public class BulletTrap : MonoBehaviour
     private int _level;
 
     private int _maxBulletTrap;
-    //private GameObject[] _bullets;
-    //private Transform[] _bulletPositions;
-    //private Bullet[] _bulletLevels;
 
     private void Awake()
     {
@@ -38,16 +35,6 @@ public class BulletTrap : MonoBehaviour
         _playerPos = GameObject.FindGameObjectWithTag("Character").GetComponent<Transform>();
 
         _maxBulletTrap = 4;
-        //_bullets = new GameObject[_maxBulletTrap];
-        //_bulletPositions = new Transform[_maxBulletTrap];
-        //_bulletLevels = new Bullet[_maxBulletTrap];
-        //
-        //for(int i = 0; i < _maxBulletTrap; i++)
-        //{
-        //    _bullets[i] = Resources.Load<GameObject>("Prefabs/BulletTrap");
-        //    _bulletPositions[i] = transform.GetChild(i);
-        //    _bulletLevels[i] = Resources.Load<GameObject>("Prefabs/BulletTrap").GetComponent<Bullet>();
-        //}
     }
 
     void Update()
@@ -81,7 +68,7 @@ public class BulletTrap : MonoBehaviour
     void ShootBullet(int trapIndex)
     {
         float bulletSpeed = _bulletLevels[trapIndex].speed;
-        float bulletAtk = _bulletLevels[trapIndex].atk;  // 코드에서 작성한 값이 적용 안되는 문제가 있음
+        float bulletAtk = _bulletLevels[trapIndex].atk;
 
         GameObject bullet = Instantiate(_bullets[trapIndex], _bulletPositions[trapIndex].position, Quaternion.identity);
         _bulletRigid = bullet.GetComponent<Rigidbody2D>();

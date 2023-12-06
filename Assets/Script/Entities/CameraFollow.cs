@@ -1,10 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
 {
-
     public Transform target; // 따라다닐 대상 캐릭터
 
     void LateUpdate()

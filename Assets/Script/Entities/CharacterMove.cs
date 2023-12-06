@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class CharacterMove : MonoBehaviour
@@ -30,19 +27,6 @@ public class CharacterMove : MonoBehaviour
     {
         ApplyMove(_MoveDirection);
     }
-
-    //private void Move(Vector2 direction)
-    //{
-    //    _MoveDirection = direction;
-    //    if (_slow != null && _slow.IsPlayerStillInWater())
-    //    {
-    //        _Rigidbody.velocity = direction * _slow.slowdownFactor;
-    //    }
-    //    else
-    //    {
-    //        _Rigidbody.velocity = direction;
-    //    }
-    //}
 
     private void ApplyMove(Vector2 direction)
     {

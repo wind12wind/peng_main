@@ -1,8 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Data;
 using UnityEngine;
-using UnityEngine.Tilemaps;
 
 public class ItemSpawn : MonoBehaviour
 {
@@ -17,12 +13,6 @@ public class ItemSpawn : MonoBehaviour
     private float spawnTimer;
     private float itemBoxTimer;
 
-    void Start()
-    {
-
-    }
-
-
     void Update()
     {
         spawnTimer += Time.deltaTime;
@@ -33,12 +23,6 @@ public class ItemSpawn : MonoBehaviour
             spawnTimer = 0;
             PotionRandomSpawn();
         }
-        //if (itemBoxTimer >= 5f)
-        //{
-        //    itemBoxTimer = 0;
-        //    ItemBoxSpawn();
-
-        //}
     }
 
     private void PotionRandomSpawn()
@@ -70,12 +54,4 @@ public class ItemSpawn : MonoBehaviour
                 break;
         }
     }
-
-    //private void ItemBoxSpawn()
-    //{
-    //    Vector3 randomPosition = new Vector3(Random.Range(minX, maxX), Random.Range(minY, maxY));
-
-    //    GameObject abilityBox = Instantiate(itemBox[0], randomPosition, Quaternion.identity);
-    //    abilityBox.transform.parent = transform;
-    //}
 }

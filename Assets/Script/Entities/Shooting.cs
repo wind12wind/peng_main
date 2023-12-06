@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Shooting : MonoBehaviour
@@ -15,7 +12,6 @@ public class Shooting : MonoBehaviour
     private float SnowBallSpeed = 10f;
     private Transform SnowBalls;
 
-
     private void Awake()
     {
         _controller = GetComponent<CharacterController>();
@@ -28,7 +24,6 @@ public class Shooting : MonoBehaviour
         _controller.OnAttackEvent += OnShoot;
         _controller.OnLookEvent += OnAim;
         _controller.OnMoveEvent += OnMoveRotation;
-
     }
 
     private void OnAim(Vector2 newAimDirection)
@@ -51,15 +46,6 @@ public class Shooting : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-       
-        //방향 , 마우스포인트 값, 객체에 스크립트 생성
-        //벡터 포워드
-
-    }
-
     private void OnMoveRotation(Vector2 newMoveDirection)
     {
         RotateCharacter(newMoveDirection);
@@ -67,7 +53,6 @@ public class Shooting : MonoBehaviour
 
     private void RotateCharacter(Vector2 direction)
     {
-
         if (direction.x != 0)
         {
             characterRenderer.flipX = direction.x < 0;

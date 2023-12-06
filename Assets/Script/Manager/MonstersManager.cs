@@ -9,6 +9,7 @@ public class MonstersManager : MonoBehaviour
     [SerializeField] private GameObject _player;
     private Rigidbody2D _targetPlayer;
 
+    //array for Resource.Load() fileName
     string[] _monsters = { "Monster_Skelet", "Monster_MaskedOrc", "Monster_Chort" };
 
     private Transform[] _door = new Transform[6];
@@ -38,6 +39,7 @@ public class MonstersManager : MonoBehaviour
 
     private void Start()
     {
+        // monster Instantiated every 2 second
         InvokeRepeating("MonsterSpawn", 2f, 2f);
     }
 

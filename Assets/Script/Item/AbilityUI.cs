@@ -1,12 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class AbilityUI : MonoBehaviour
 {
     [SerializeField] private GameObject canvas;
     [SerializeField] private Sprite spriteAdd;
-
 
     void Start()
     {
@@ -16,11 +13,5 @@ public class AbilityUI : MonoBehaviour
 
         SpriteRenderer spriteRenderer = abilitySelectImage.AddComponent<SpriteRenderer>();
         spriteRenderer.sprite = spriteAdd;
-
-    }
-
-    void Update()
-    {
-        
     }
 }

@@ -7,6 +7,7 @@ public class ScoreManager : MonoBehaviour
     public float RemainTime { get; private set; }
     public int Kill { get; private set; }
 
+    // variables for PlayerPrefs Key
     private const string BestAliveTimeKey = "BestAliveTime";
     private const string BestKillKey = "BestKill";
 
@@ -29,7 +30,7 @@ public class ScoreManager : MonoBehaviour
         Instantiate(topUI, null);
     }
 
-    //test code
+    // stage level up every 10 seconds
     private void Update()
     {
         RemainTime -= Time.deltaTime;

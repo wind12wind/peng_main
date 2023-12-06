@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CharacterController : MonoBehaviour
@@ -29,14 +27,13 @@ public class CharacterController : MonoBehaviour
             _timeSinceLastAttack = 0f;
             CallAttackEvent();
         }
-
-
     }
 
     public void CallMoveEvent(Vector2 direction)
     {
         OnMoveEvent?.Invoke(direction);
     }
+
     public void CallLookEvent(Vector2 direction)
     {
         OnLookEvent?.Invoke(direction);

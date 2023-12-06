@@ -1,10 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 
 public class Monster_Chort : Monster
 {
-
     private void Awake()
     {
         base.Awake();
@@ -14,15 +10,10 @@ public class Monster_Chort : Monster
         Hp = 30;
         speed = 7;
         level = 3;
-
     }
+
     void Start()
     {
         isDead = false ;
-    }
-
-    private void Update()
-    {
-
     }
 }

@@ -72,9 +72,6 @@ public class GameManager : MonoBehaviour
         {
             CurrentTime += Time.deltaTime;
         }
-
-        //code for test
-        if (CurrentTime > 5) GameOver();
     }
 
     public void GameOver()

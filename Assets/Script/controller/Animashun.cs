@@ -1,20 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.EventSystems;
-using UnityEngine.UIElements;
 
 public class Animashun : MonoBehaviour
 {
-
-
     public Animator penguinA;
     public Animator penguinSide;
     public Animator penguinDie; 
     public GameObject player;
     
-
     public KeyCode key1 = KeyCode.W, S, A, D;
     public KeyCode key2 = KeyCode.Q;
     public KeyCode key3 = KeyCode.E;
@@ -32,7 +24,6 @@ public class Animashun : MonoBehaviour
 
     void Update()
     {
-
         if(Input.GetKey(key1) || Input.GetKey(S) || Input.GetKey(A) || Input.GetKey(D)) 
         {
             // anim2.SetTrigger("walk"); 
@@ -68,7 +59,6 @@ public class Animashun : MonoBehaviour
             sideCool = 3;
         }
 
-
          setTime -= Time.deltaTime; // 남은 시간을 감소시켜준다.
 
         if (Input.GetKeyDown(key3))
@@ -84,12 +74,11 @@ public class Animashun : MonoBehaviour
             setTime = 5; //점멸시간 5초 ㄱㄷ
         }
 
-        if (Player.Instance.currentHp <= 0) //체력 0보다 같거나 작을 때
+        if (Player.Instance.CurrentHp <= 0) //체력 0보다 같거나 작을 때
         {
             penguinDie.SetBool("YouDie", true); //실행 
         }
-
-        else if(Player.Instance.currentHp > 0)
+        else if(Player.Instance.CurrentHp > 0)
         {
             penguinDie.SetBool("YouDie", false); //실행 ㄴ
         }

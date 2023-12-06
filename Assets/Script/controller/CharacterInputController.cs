@@ -1,8 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-
 
 public class CharacterInputController : CharacterController
 {
@@ -12,12 +9,14 @@ public class CharacterInputController : CharacterController
     {
         _camera = Camera.main;
     }
+
     public void OnMove(InputValue value)
     {
         //Debug.Log("OnMove" +  value.ToString());
         Vector2 moveInput = value.Get<Vector2>().normalized;
         CallMoveEvent(moveInput);
     }
+
     public void OnLook(InputValue value)
     {
         //Debug.Log("OnLook" + value.ToString());
@@ -31,6 +30,7 @@ public class CharacterInputController : CharacterController
             CallLookEvent(newAim);
         }
     }
+
     public void OnAttack(InputValue value)
     {
         IsAttacking = value.isPressed;
@@ -47,5 +47,4 @@ public class CharacterInputController : CharacterController
             transform.localScale = scale;
         }
     }
-
 }
