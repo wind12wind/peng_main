@@ -7,9 +7,12 @@ using UnityEngine.UIElements;
 
 public class Animashun : MonoBehaviour
 {
+
+
     public Animator penguinA;
-    public Animator penguinSide; 
-    public GameObject Player;
+    public Animator penguinSide;
+    public Animator penguinDie; 
+    public GameObject player;
     
 
     public KeyCode key1 = KeyCode.W, S, A, D;
@@ -73,7 +76,7 @@ public class Animashun : MonoBehaviour
             if (setTime <= 0)
             {
                 Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                Player.transform.position = mousePos;
+                player.transform.position = mousePos;
             }
         }
         else if(setTime <= 0 && Input.GetKeyUp(key3))
@@ -81,5 +84,15 @@ public class Animashun : MonoBehaviour
             setTime = 5; //점멸시간 5초 ㄱㄷ
         }
 
+        Debug.Log($"HP가 {Player.Instance.currentHp} 만큼 남았어!");
+
+        if (Player.Instance.currentHp <= 0) //체력 0보다 같거나 작을 때
+        {
+            penguinDie.SetBool("YouDie", true); //실행 
+        }
+        else if(Player.Instance.currentHp > 0)
+        {
+            penguinDie.SetBool("YouDie", false); //실행 ㄴ
+        }
     }
 }

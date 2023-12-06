@@ -33131,6 +33131,7 @@ GameObject:
   - component: {fileID: 575407820}
   - component: {fileID: 575407822}
   - component: {fileID: 575407824}
+  - component: {fileID: 575407826}
   m_Layer: 0
   m_Name: Character
   m_TagString: Character
@@ -33295,7 +33296,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentHp: 0
-  currentMp: 0
 --- !u!1 &662898323
 GameObject:
   m_ObjectHideFlags: 0
@@ -65416,7 +65416,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   penguinA: {fileID: 809922643}
   penguinSide: {fileID: 809922643}
-  Player: {fileID: 575407815}
+  penguinDie: {fileID: 809922643}
+  player: {fileID: 575407815}
   key1: 119
   S: 115
   A: 97
