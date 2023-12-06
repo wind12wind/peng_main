@@ -91,4 +91,11 @@ public class ScoreManager : MonoBehaviour
         PlayerPrefs.SetFloat(BestAliveTimeKey, 0.0f);
         PlayerPrefs.SetInt(BestKillKey, 0);
     }
+
+    public void ResetKill()
+    {
+        Kill = 0;
+        _level = 1;
+        RemainTime = 10.0f;
+    }
 }
