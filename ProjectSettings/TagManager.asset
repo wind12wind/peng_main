@@ -8,6 +8,9 @@ TagManager:
   - Monster
   - BulletTrap
   - Item
+  - GameManager
+  - EnemyManager
+  - Managers
   layers:
   - Default
   - TransparentFX
