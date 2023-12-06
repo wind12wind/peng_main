@@ -1,7 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Threading;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class Monster : MonoBehaviour
@@ -9,7 +5,7 @@ public class Monster : MonoBehaviour
     // 몬스터 정보 
 
     [SerializeField] protected int monsterType;
-    [SerializeField] protected int Hp;
+    public int Hp;
 
     public float speed;
 
@@ -31,4 +27,19 @@ public class Monster : MonoBehaviour
         isDead = true;
         Destroy(gameObject);
     }
+    private void OnTriggerEnter2D(Collider2D SnowBall)
+    {
+        if (SnowBall.CompareTag("SnowBall"))
+        {
+
+            int TotalDamage = Player.Instance.atk;
+            Hp -= TotalDamage;
+
+            Debug.Log($"체력 {Hp}");
+
+        }
+
+    }
+
+
 }
