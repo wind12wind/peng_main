@@ -43,10 +43,10 @@ public class GameManager : MonoBehaviour
         GameObject field = Resources.Load<GameObject>("ManagerAndUI/FieldManager");
         Instantiate(field, _Managers.transform);
 
-        GameObject enemy = Resources.Load<GameObject>("ManagerAndUI/EnemyManager");
+        GameObject enemy = Resources.Load<GameObject>("ManagerAndUI/MonstersManager");
         Instantiate(enemy);
 
-        GameObject bulletTrap = Resources.Load<GameObject>("Prefabs/BulletTrap");
+        GameObject bulletTrap = Resources.Load<GameObject>("Prefabs/Bullets/BulletTrap");
         Instantiate(bulletTrap);
     }
 
