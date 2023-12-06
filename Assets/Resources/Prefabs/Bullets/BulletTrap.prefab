@@ -133,7 +133,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7094468406136433681}
-  - component: {fileID: 5663367225257521377}
+  - component: {fileID: 5189890934382569024}
   m_Layer: 8
   m_Name: BulletTrap
   m_TagString: Untagged
@@ -158,9 +158,9 @@ Transform:
   - {fileID: 1482453022055182330}
   - {fileID: 1010072058511074122}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5663367225257521377
+--- !u!114 &5189890934382569024
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -172,19 +172,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be04ca3ebada8324f976577e32af997d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullets:
-  - {fileID: 2806202018171703703, guid: 6179e115ca37b274298a288a71f07c88, type: 3}
-  - {fileID: 169118197497240209, guid: b9e53f1d9fc0b084d8c810046223804d, type: 3}
-  - {fileID: 78753764983021872, guid: d297691176a71f040a7906688c566fde, type: 3}
-  - {fileID: 3344487539706627069, guid: cc44e4e4fd8c0a640a7d34f592ce25b8, type: 3}
-  bulletPositions:
+  _bullets:
+  - {fileID: 7246967497692329096, guid: c02fc1f150cae8f4094d51d2043b96db, type: 3}
+  - {fileID: 135162212425395409, guid: 5e864f64d9da81147b5904af9c9e77b1, type: 3}
+  - {fileID: 1135149679842255578, guid: 481b8c1f2ecc73f40b200ee12de80ac1, type: 3}
+  - {fileID: 5806011707407216447, guid: 850a9797a4a5c4f4e8e1c0b65337d5e0, type: 3}
+  _bulletPositions:
   - {fileID: 1811359800317377748}
   - {fileID: 3076969834999079488}
   - {fileID: 1482453022055182330}
   - {fileID: 1010072058511074122}
-  bulletLevel:
-  - {fileID: -3362806070473297567, guid: 6179e115ca37b274298a288a71f07c88, type: 3}
-  - {fileID: 3401335300521269406, guid: b9e53f1d9fc0b084d8c810046223804d, type: 3}
-  - {fileID: 7541118082322641639, guid: d297691176a71f040a7906688c566fde, type: 3}
-  - {fileID: 470322174244627338, guid: cc44e4e4fd8c0a640a7d34f592ce25b8, type: 3}
-  playerPos: {fileID: 0}
+  _bulletLevels:
+  - {fileID: 5501836998666416572, guid: c02fc1f150cae8f4094d51d2043b96db, type: 3}
+  - {fileID: 5034595401431409135, guid: 5e864f64d9da81147b5904af9c9e77b1, type: 3}
+  - {fileID: 3466285703031939159, guid: 481b8c1f2ecc73f40b200ee12de80ac1, type: 3}
+  - {fileID: 3762246878154016249, guid: 850a9797a4a5c4f4e8e1c0b65337d5e0, type: 3}
+  _playerPos: {fileID: 0}
