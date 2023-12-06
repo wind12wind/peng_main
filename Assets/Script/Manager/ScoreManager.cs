@@ -1,18 +1,77 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ScoreManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public static ScoreManager Score { get; private set; }
+
+    public float RemainTime { get; private set; }
+    public int Kill { get; private set; }
+
+    private const string BestAliveTimeKey = "BestAliveTime";
+    private const string BestKillKey = "BestKill";
+
+    private void Awake()
     {
-        
+        //Singleton
+        if (Score == null)
+        {
+            Score = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+
+        Kill = 0;
+        RemainTime = 10.0f;
+
+        GameObject topUI = Resources.Load<GameObject>("ManagerAndUI/TopUI");
+        Instantiate(topUI, null);
     }
 
-    // Update is called once per frame
-    void Update()
+    //test code
+    private void Update()
     {
-        
+        RemainTime -= Time.deltaTime;
+
+        if(RemainTime <= 0f)
+        {
+            RemainTime = 10.0f;
+            MonstersManager.Enemy.LevelUp();
+        }
+    }
+
+    public float LoadBestAliveTime()
+    {
+        return PlayerPrefs.GetFloat(BestAliveTimeKey);
+    }
+
+    public void SaveBestAliveTime()
+    {
+        float time = GameManager.Instance.CurrentTime;
+
+        if (LoadBestAliveTime() < time)
+        {
+            PlayerPrefs.SetFloat(BestAliveTimeKey, time);
+        }
+    }
+
+    public int LoadBestKill()
+    {
+        return PlayerPrefs.GetInt(BestKillKey);
+    }
+
+    public void SaveBestKill()
+    {
+        if (LoadBestKill() < Kill)
+        {
+            PlayerPrefs.SetInt(BestKillKey, Kill);
+        }
+    }
+
+    // if a monster killed, call this method
+    public void SubtractRemain()
+    {
+        Kill++;
     }
 }

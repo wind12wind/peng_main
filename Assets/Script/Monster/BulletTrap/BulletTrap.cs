@@ -1,67 +1,95 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class BulletTrap : MonoBehaviour
 {
-    public static BulletTrap _bulletTrap;
+    public static BulletTrap BulletTrapInstance { get; private set; }
 
-    [SerializeField] private GameObject[] bullets;
-    [SerializeField] private Transform[] bulletPositions;
-    [SerializeField] private Bullet[] bulletLevel;
+    [SerializeField] private GameObject[] _bullets;
+    [SerializeField] private Transform[] _bulletPositions;
+    [SerializeField] private Bullet[] _bulletLevels;
 
-    [SerializeField] private Transform playerPos;
+    [SerializeField] private Transform _playerPos;
 
     private Rigidbody2D _bulletRigid;
 
-    private float[] attackTimes = { 1f, 2f, 2.5f, 3f };
-    private float[] attackDelays = { 0f, 0f, 0f, 0f };
+    private float[] _attackTimes = { 0.5f, 1f, 1.5f, 2f };
+    private float[] _attackDelays = { 0f, 0f, 0f, 0f };
 
-    public int currentLevel = 1;
+    private int _level;
+
+    private int _maxBulletTrap;
+    //private GameObject[] _bullets;
+    //private Transform[] _bulletPositions;
+    //private Bullet[] _bulletLevels;
 
     private void Awake()
     {
-        Invoke("LevelUp", 10f);
-        Invoke("LevelUp", 20f);
-        Invoke("LevelUp", 30f);
-        Invoke("LevelUp", 40f);
-    }
+        //Singleton
+        if (BulletTrapInstance == null)
+        {
+            BulletTrapInstance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
 
-    void Start()
-    {
+        _level = 1;
+        _playerPos = GameObject.FindGameObjectWithTag("Character").GetComponent<Transform>();
 
+        _maxBulletTrap = 4;
+        //_bullets = new GameObject[_maxBulletTrap];
+        //_bulletPositions = new Transform[_maxBulletTrap];
+        //_bulletLevels = new Bullet[_maxBulletTrap];
+        //
+        //for(int i = 0; i < _maxBulletTrap; i++)
+        //{
+        //    _bullets[i] = Resources.Load<GameObject>("Prefabs/BulletTrap");
+        //    _bulletPositions[i] = transform.GetChild(i);
+        //    _bulletLevels[i] = Resources.Load<GameObject>("Prefabs/BulletTrap").GetComponent<Bullet>();
+        //}
     }
 
     void Update()
     {
-        for (int i = 0; i < attackTimes.Length; i++)
+        for (int i = 0; i < _level; i++)
         {
-            attackDelays[i] += Time.deltaTime;
+            _attackDelays[i] += Time.deltaTime;
 
-            if (attackDelays[i] >= attackTimes[i] && currentLevel >= i + 1)
+            if ((_attackDelays[i] >= _attackTimes[i]) && (_level >= i + 1))
             {
-                ShootBullet(i + 1);
-                attackDelays[i] = 0f;
+                ShootBullet(i);
+                _attackDelays[i] = 0f;
             }
         }
     }
-    void ShootBullet(int level)
-    {
-        float bulletSpeed = bulletLevel[level - 1].speed;
-        float bulletAtk = bulletLevel[level - 1].atk;
 
-        GameObject bullet = Instantiate(bullets[level -1], bulletPositions[level -1].position, Quaternion.identity);
+    public void InitBullets()
+    {
+        for(int i = 1; i <= _maxBulletTrap; i++)
+        {
+            _bullets[0] = Resources.Load<GameObject>($"Prefabs/Bullets/Level{i}_Bullet");
+        }
+    }
+
+    public void CurrentLevel()
+    {
+        // Bullet 
+        _level = (MonstersManager.Enemy.Level > 4) ? 4 : MonstersManager.Enemy.Level;
+    }
+
+    void ShootBullet(int trapIndex)
+    {
+        float bulletSpeed = _bulletLevels[trapIndex].speed;
+        float bulletAtk = _bulletLevels[trapIndex].atk;  // 코드에서 작성한 값이 적용 안되는 문제가 있음
+
+        GameObject bullet = Instantiate(_bullets[trapIndex], _bulletPositions[trapIndex].position, Quaternion.identity);
         _bulletRigid = bullet.GetComponent<Rigidbody2D>();
 
-        Vector2 direction = (Vector2)playerPos.position - (Vector2)bulletPositions[level -1].position;
+        Vector2 direction = (Vector2)_playerPos.position - (Vector2)_bulletPositions[trapIndex].position;
         direction.Normalize();
 
         _bulletRigid.AddForce(direction * bulletSpeed, ForceMode2D.Impulse);
         _bulletRigid.transform.parent = transform;
-    }
-
-    void LevelUp()
-    {
-        currentLevel++;
     }
 }

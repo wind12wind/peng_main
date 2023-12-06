@@ -20,7 +20,6 @@ public class Player : MonoBehaviour
 
     private bool isDead;
 
-
     private void Awake()
     {
         atk = 10;
@@ -28,32 +27,15 @@ public class Player : MonoBehaviour
         currentHp = 100; //이거 사용할게요 
         maxMp = 100;
         currentMp = 30;
+        isDead = false;
 
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject);
         }
         else
         {
             Destroy(gameObject);
-        }
-
-       
-
-    }
-
-    void Start()
-    {
-
-    }
-
-
-    void Update()
-    {
-        if (isDead)
-        {
-            PlayerIsDead();
         }
     }
 
@@ -65,6 +47,7 @@ public class Player : MonoBehaviour
             if (currentHp <= 0)
             {
                 isDead = true;
+                PlayerIsDead();
             }
         }
     }
