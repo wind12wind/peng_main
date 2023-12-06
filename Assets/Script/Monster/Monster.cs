@@ -26,6 +26,7 @@ public class Monster : MonoBehaviour
     {
         isDead = true;
         Destroy(gameObject);
+        ScoreManager.Score.AddKill();
     }
     private void OnTriggerEnter2D(Collider2D SnowBall)
     {

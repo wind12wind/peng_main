@@ -70,7 +70,7 @@ public class ScoreManager : MonoBehaviour
     }
 
     // if a monster killed, call this method
-    public void SubtractRemain()
+    public void AddKill()
     {
         Kill++;
     }
