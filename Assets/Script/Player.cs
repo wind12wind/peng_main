@@ -9,7 +9,7 @@ public class Player : MonoBehaviour
 {
     public static Player _player;
 
-    private int atk;
+    public int atk;
     private int maxHp;
     public int currentHp;
     private int maxMp;

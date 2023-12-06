@@ -8,6 +8,8 @@ TagManager:
   - Monster
   - BulletTrap
   - Item
+  - SnowBall
+  - Wall
   layers:
   - Default
   - TransparentFX
@@ -19,7 +21,7 @@ TagManager:
   - Monster
   - BulletTrap
   - Item
-  - 
+  - Wall
   - 
   - 
   - 
