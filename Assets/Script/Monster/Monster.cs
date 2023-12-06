@@ -2,20 +2,23 @@ using UnityEngine;
 
 public class Monster : MonoBehaviour
 {
+    public static Monster Instance;
+
     // 몬스터 정보 
 
     [SerializeField] protected int monsterType;
     public int Hp;
-
     public float speed;
 
     protected int level;
+    public bool isDead;
+    protected Animator animator;
 
-    protected bool isDead;
 
-    private void Awake()
+    
+    protected void Awake()
     {
-
+        animator = GetComponent<Animator>();
     }
     private void Start()
     {
@@ -23,10 +26,13 @@ public class Monster : MonoBehaviour
     }
 
     protected void MonsterIsDead()
-    {
+    { 
         isDead = true;
-        Destroy(gameObject);
+        gameObject.tag = "Untagged";
+        animator.SetBool("IsDead", true);
+        Destroy(gameObject, 1f);
     }
+
     private void OnTriggerEnter2D(Collider2D SnowBall)
     {
         if (SnowBall.CompareTag("SnowBall"))
@@ -37,9 +43,12 @@ public class Monster : MonoBehaviour
 
             Debug.Log($"체력 {Hp}");
 
+            if (Hp<= 0 && !isDead)
+            {
+                speed = 0f;
+                MonsterIsDead();
+            }
         }
 
     }
-
-
 }

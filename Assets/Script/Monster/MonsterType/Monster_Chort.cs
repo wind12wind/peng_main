@@ -7,6 +7,8 @@ public class Monster_Chort : Monster
 
     private void Awake()
     {
+        base.Awake();
+
         monsterType = 2;
 
         Hp = 30;
@@ -21,9 +23,6 @@ public class Monster_Chort : Monster
 
     private void Update()
     {
-        if(Hp <= 0)
-        {
-            MonsterIsDead();
-        }
+
     }
 }
