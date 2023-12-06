@@ -1,34 +1,21 @@
-using JetBrains.Annotations;
-using System.Collections;
-using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 using UnityEngine;
-using UnityEngine.InputSystem.Processors;
 
 public class Player : MonoBehaviour
 {
-    public static Player _player;
-
-    public int atk;
-    private int maxHp;
-    public int currentHp;
-    private int maxMp;
-    public int currentMp;
-
-
     public static Player Instance { get; private set; }
+
+    public int Atk;
+    public int CurrentHp;
+    public int CurrentMp;
+
+    private int maxHp;
+    private int maxMp;
 
     private bool isDead;
 
     private void Awake()
     {
-        atk = 10;
-        maxHp = 100;
-        currentHp = 100; //이거 사용할게요 
-        maxMp = 100;
-        currentMp = 30;
-        isDead = false;
-
+        // Singleton
         if (Instance == null)
         {
             Instance = this;
@@ -37,6 +24,13 @@ public class Player : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        Atk = 10;
+        maxHp = 100;
+        CurrentHp = 100;
+        maxMp = 100;
+        CurrentMp = 30;
+        isDead = false;
     }
 
     // BulletTrap과 충돌했을 때 발생
@@ -44,8 +38,9 @@ public class Player : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("BulletTrap"))
         {
-            if (currentHp <= 0)
+            if (CurrentHp <= 0)
             {
+                CurrentHp = 0;
                 isDead = true;
                 PlayerIsDead();
             }

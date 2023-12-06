@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class FallingObject : MonoBehaviour
@@ -13,7 +11,6 @@ public class FallingObject : MonoBehaviour
 
     void Start()
     {
-
         InvokeRepeating("SpawnfallingObject", 5f, spawnInterval);
     }
     void SpawnfallingObject()
