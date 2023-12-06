@@ -20,13 +20,13 @@ public class GameManager : MonoBehaviour
     }
 
     // ScoreManager Singleton
-    private static ScoreManager _score = new ScoreManager(1, 10, 0);
+    private static ScoreManager _score = new ScoreManager(10, 0);
     public static ScoreManager Score
     {
         get
         {
             if (_score == null)
-                _score = new ScoreManager(1, 10, 0);
+                _score = new ScoreManager(10, 0);
 
             return _score;
         }
@@ -85,6 +85,7 @@ public class GameManager : MonoBehaviour
     {
         Init();
         _controller = GetComponent<GameController>();
+        Resource.Instantiate("Prefabs", "Character");
     }
 
     // Start is called before the first frame update
@@ -96,7 +97,7 @@ public class GameManager : MonoBehaviour
 
         Time.timeScale = 1.0f;
 
-        _resource.Instantiate("TopUI");
+        _resource.Instantiate("Prefabs", "TopUI");
         _field.CreateTileMap("Field");
 
         _controller.OnRetryEvent += RetryGame;
@@ -144,7 +145,7 @@ public class GameManager : MonoBehaviour
         Kill = _score.Kill;
         BestKill = (BestKill > Kill) ? BestKill : Kill;
 
-        _resource.Instantiate("EndPanel");
+        _resource.Instantiate("Prefabs", "EndPanel");
 
         Time.timeScale = 0.0f;
         IsRunning = false;
@@ -155,6 +156,7 @@ public class GameManager : MonoBehaviour
     {
         //Debug.Log("RetryGame");
         SceneManager.LoadScene("SampleScene");
+        Resource.Instantiate("Prefabs", "Character");
 
         _instance.CurrentTime = 0.0f;
         _instance.Kill = 0;

@@ -12,7 +12,7 @@ public class TopUI : MonoBehaviour
     void Update()
     {
         _currentTimeText.text = GameManager.Instance.CurrentTime.ToString("N2");
-        _levelText.text = GameManager.Score.Level.ToString();
+        _levelText.text = EnemyManager.Enemy.Level.ToString();
         _remainKillText.text = GameManager.Score.RemainKill.ToString();
     }
 }

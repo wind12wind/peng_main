@@ -28,9 +28,9 @@ public class ScoreManager
         Kill++;
         RemainKill--;
 
-        if ( (RemainKill == 0) && (GameManager.Enemy.Level < 6) )
+        if ( (RemainKill == 0) && (EnemyManager.Enemy.Level < 6) )
         {
-            GameManager.Enemy.LevelUp();
+            EnemyManager.Enemy.LevelUp();
         }
     }
 }

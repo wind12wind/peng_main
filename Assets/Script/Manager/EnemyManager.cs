@@ -33,8 +33,6 @@ public class EnemyManager : MonoBehaviour
     private void Awake()
     {
         Init();
-
-        _player = GameObject.FindGameObjectWithTag("Character");
         _targetPlayer = _player.GetComponent<Rigidbody2D>();
         _playerPos = _player.GetComponent<Transform>();
         Level = 1;
