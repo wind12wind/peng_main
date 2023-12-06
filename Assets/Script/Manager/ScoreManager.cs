@@ -1,36 +1,87 @@
 using UnityEngine;
 
-public class ScoreManager
+public class ScoreManager : MonoBehaviour
 {
+    public static ScoreManager Score { get; private set; }
+
     public int RemainKill { get; private set; }
     public int Kill { get; private set; }
 
-    public ScoreManager(int remainKill, int kill)
+    private const string BestAliveTimeKey = "BestAliveTime";
+    private const string BestKillKey = "BestKill";
+
+    private void Awake()
     {
-        RemainKill = remainKill;
-        Kill = kill;
+        //Singleton
+        if (Score == null)
+        {
+            Score = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+
+        Kill = 0;
+        RemainKill = 10;
+
+        GameObject topUI = Resources.Load<GameObject>("ManagerAndUI/TopUI");
+        Instantiate(topUI, null);
     }
 
-    private void AchieveScore()
+    //test code
+    private void Start()
     {
-        Debug.Log("achieve kill");
-        this.RemainKill = 10;
-        //GameManager.Enemy.SpawnMonster();
-        //Enemy에 레벨업이 됐으니 다음 레벨의 코드 돌리게 하는 용도로 method 실행
-        //입력 없는 method 사용 -> 해당 method가 타 method 호출하여 실행
-        //사실상 껍데기 method
+        InvokeRepeating("ForceKillUp", 1f, 1f);
+    }
+
+    private void ForceKillUp()
+    {
+        SubtractRemain();
+    }
+
+    public float LoadBestAliveTime()
+    {
+        return PlayerPrefs.GetFloat(BestAliveTimeKey);
+    }
+
+    public void SaveBestAliveTime()
+    {
+        float time = GameManager.Instance.CurrentTime;
+
+        if (LoadBestAliveTime() < time)
+        {
+            PlayerPrefs.SetFloat(BestAliveTimeKey, time);
+        }
+    }
+
+    public int LoadBestKill()
+    {
+        return PlayerPrefs.GetInt(BestKillKey);
+    }
+
+    public void SaveBestKill()
+    {
+        if (LoadBestKill() < Kill)
+        {
+            PlayerPrefs.SetInt(BestKillKey, Kill);
+        }
     }
 
     // if a monster killed, call this method
     public void SubtractRemain()
     {
-        Debug.Log("AddKill");
         Kill++;
-        RemainKill--;
 
-        if ( (RemainKill == 0) && (EnemyManager.Enemy.Level < 6) )
+        if (RemainKill != 0)
         {
-            EnemyManager.Enemy.LevelUp();
+            RemainKill--;
+            //Debug.Log($"Kill Added, remain Kill = {RemainKill}");
+        }
+        if ( (RemainKill == 0) && (MonstersManager.Enemy.Level < 6) )
+        {
+            RemainKill = 10;
+            MonstersManager.Enemy.LevelUp();
         }
     }
 }
