@@ -21,18 +21,19 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+        _Managers = GameObject.FindGameObjectWithTag("Managers");
+
         //Singleton
-        if(Instance == null)
+        if (Instance == null)
         {
             Instance = this;
             DontDestroyOnLoad(Instance);
+            DontDestroyOnLoad(_Managers);
         }
         else
         {
             Destroy(gameObject);
         }
-
-        _Managers = GameObject.FindGameObjectWithTag("Managers");
 
         //using pause, resume, retry
         _controller = GetComponent<GameController>();
@@ -71,6 +72,9 @@ public class GameManager : MonoBehaviour
         {
             CurrentTime += Time.deltaTime;
         }
+
+        //code for test
+        if (CurrentTime > 5) GameOver();
     }
 
     public void GameOver()
