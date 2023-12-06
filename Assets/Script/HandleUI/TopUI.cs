@@ -4,22 +4,23 @@ using TMPro;
 public class TopUI : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI _currentTimeText;
-
     [SerializeField] private TextMeshProUGUI _levelText;
+    [SerializeField] private TextMeshProUGUI _playerHPText;
+    [SerializeField] private TextMeshProUGUI _killText;
+
     [SerializeField] private TextMeshProUGUI _remainTimeText;
 
-    [SerializeField] private TextMeshProUGUI _playerHP;
+    
 
     // Update is called once per frame
     private void Update()
     {
         _levelText.text = MonstersManager.Enemy.Level.ToString();
         _remainTimeText.text = ScoreManager.Score.RemainTime.ToString("N2");
+        _playerHPText.text = Player.Instance.CurrentHp.ToString();
+        _killText.text = ScoreManager.Score.Kill.ToString();
 
         _currentTimeText.text = TimeCalc();
-        //_currentTimeText.text = GameManager.Instance.CurrentTime.ToString("N2");
-
-        _playerHP.text = Player.Instance.CurrentHp.ToString();
     }
 
     private string TimeCalc()

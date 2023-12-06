@@ -7,6 +7,8 @@ public class ScoreManager : MonoBehaviour
     public float RemainTime { get; private set; }
     public int Kill { get; private set; }
 
+    private int _level = 1;
+
     // variables for PlayerPrefs Key
     private const string BestAliveTimeKey = "BestAliveTime";
     private const string BestKillKey = "BestKill";
@@ -33,12 +35,20 @@ public class ScoreManager : MonoBehaviour
     // stage level up every 10 seconds
     private void Update()
     {
-        RemainTime -= Time.deltaTime;
-
-        if(RemainTime <= 0f)
+        if(RemainTime > 0.0f)
         {
-            RemainTime = 10.0f;
-            MonstersManager.Enemy.LevelUp();
+            RemainTime -= Time.deltaTime;
+
+            if ((RemainTime <= 0f) && (_level < 6))
+            {
+                _level++;
+                RemainTime = 10.0f;
+                MonstersManager.Enemy.LevelUp();
+            }
+            else if(_level >= 6)
+            {
+                RemainTime = 0.0f;
+            }
         }
     }
 
@@ -74,5 +84,11 @@ public class ScoreManager : MonoBehaviour
     public void AddKill()
     {
         Kill++;
+    }
+
+    public void InitBestScore()
+    {
+        PlayerPrefs.SetFloat(BestAliveTimeKey, 0.0f);
+        PlayerPrefs.SetInt(BestKillKey, 0);
     }
 }
