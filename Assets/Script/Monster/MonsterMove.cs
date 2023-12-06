@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MonsterMove : MonoBehaviour
 {
-    public Rigidbody2D targetPlayer;
+    public static Rigidbody2D targetPlayer;
 
     Monster monster;
     SpriteRenderer sprite;
@@ -33,5 +33,10 @@ public class MonsterMove : MonoBehaviour
         // 플레이어 방향으로 쳐다보기
         sprite.flipX = targetPlayer.position.x < 0;
         //sprite.flipX = targetPlayer.position.x < monsterRigidbody.position.x;
+    }
+
+    public void SetTargetPlayer(Rigidbody2D player)
+    {
+        targetPlayer = player;
     }
 }

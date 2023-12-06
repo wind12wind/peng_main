@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 6257572167054622448}
   - component: {fileID: 907908657255930955}
   - component: {fileID: -3362806070473297567}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Level1_Bullet
-  m_TagString: Untagged
+  m_TagString: BulletTrap
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 2806202018171703703}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -75,7 +75,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 3
+  m_SortingOrder: 5
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -161,5 +161,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: badda8ae9d926ad429618ad61764884a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  atk: 0
-  speed: 0
+  atk: 3
+  speed: 10

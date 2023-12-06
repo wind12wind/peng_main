@@ -6,20 +6,15 @@ using UnityEngine;
 
 public class Monster : MonoBehaviour
 {
+    // 몬스터 정보 
+
     [SerializeField] protected int monsterType;
+    [SerializeField] protected int Hp;
 
-    [SerializeField] protected float maxHp;
-    [SerializeField] protected float currentHp;
-    [SerializeField] protected int atk;
-
-
-    protected float delayTime;
-    protected float atkDelay;
     public float speed;
 
     protected int level;
 
-    protected bool isAttacking;
     protected bool isDead;
 
     private void Awake()
@@ -28,14 +23,12 @@ public class Monster : MonoBehaviour
     }
     private void Start()
     {
-        currentHp = maxHp;
+
     }
 
-    protected void IsDead()
+    protected void MonsterIsDead()
     {
-        if (maxHp <= 0)
-        {
-            isDead = true;
-        }
+        isDead = true;
+        Destroy(gameObject);
     }
 }

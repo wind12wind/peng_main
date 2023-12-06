@@ -8,6 +8,7 @@ public class Shooting : MonoBehaviour
     private CharacterController _controller;
     [SerializeField] private Transform SnowBallSpawnPosition;
     private Vector2 _aimDirection = Vector2.right;
+    [SerializeField] private SpriteRenderer characterRenderer;
 
     public GameObject SnowBall;
 
@@ -21,6 +22,7 @@ public class Shooting : MonoBehaviour
     {
         _controller.OnAttackEvent += OnShoot;
         _controller.OnLookEvent += OnAim;
+        _controller.OnMoveEvent += OnMoveRotation;
 
     }
 
@@ -47,5 +49,18 @@ public class Shooting : MonoBehaviour
         //º¤ÅÍ Æ÷¿öµå
     }
 
+    private void OnMoveRotation(Vector2 newMoveDirection)
+    {
+        RotateCharacter(newMoveDirection);
+    }
 
+    private void RotateCharacter(Vector2 direction)
+    {
+
+        if (direction.x != 0)
+        {
+            characterRenderer.flipX = direction.x < 0;
+        }
+    }
 }
+

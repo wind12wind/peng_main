@@ -17,7 +17,9 @@ public class CreateMonster : Monster
 
     //public int currentLevel = LevelManager.Instance.Level;
 
-    public int currentLevel = 1; // 실험용
+    public int currentLevel = 1; // 실험용 현재 레벨
+    
+    public Rigidbody2D _targetPlayer;
     private bool spawnEnabled = false;
 
     private void Awake()
@@ -26,15 +28,15 @@ public class CreateMonster : Monster
     }
     void Start()
     {
-        Invoke("LevelUp", 5f);
+        Invoke("LevelUp", 5f); // 실험용 레벨업 * 나중에 지울 것
 
         InvokeRepeating("SpawnMonsterLevel1", 2f, 2f);
         _level1Monster.SetActive(true);
 
-        Invoke("LevelUp2", 10f);
+        Invoke("LevelUp2", 10f); // 실험용 레벨업 * 나중에 지울 것
     }
 
-    private void Update()
+    private void Update() // 몬스터 생성 
     {
         while (true)
         {
@@ -58,21 +60,7 @@ public class CreateMonster : Monster
         }
     }
 
-    void MakeMonsterLevel1()
-    {
-        SpawnMonsterLevel1();
-        Debug.Log("Level 1 Monster");
-    }
-
-    //void MakeMonsterLevel2()
-    //{
-    //    InvokeRepeating("SpawnMonsterLevel2", 0f, 4f);
-    //}
-    //void MakeMonsterLevel3()
-    //{
-    //    InvokeRepeating("SpawnMonsterLevel3", 0f, 6f);
-    //}
-
+    // 실험용 레벨업 * 나중에 지울 것
     void LevelUp()
     {
         Debug.Log("LevelUp + 1");
@@ -89,23 +77,42 @@ public class CreateMonster : Monster
         Debug.Log(currentLevel);
         spawnEnabled = true;
     }
-    void SpawnMonsterLevel1()
+    // 실험용 레벨업 * 나중에 지울 것
+
+
+    void SpawnMonsterLevel1() // Level_1 Monster
     {
+        MonsterMove monsterMove = _level1Monster.GetComponent<MonsterMove>();
         GameObject monster = Instantiate(_level1Monster, _monsterLevel1MakePoint.position, Quaternion.identity);
         monster.transform.parent = transform;
+        
+        if(monsterMove != null)
+        {
+            monsterMove.SetTargetPlayer(_targetPlayer);
+        }
     }
 
-    void SpawnMonsterLevel2()
+    void SpawnMonsterLevel2() // Level_2 Monster
     {
+        MonsterMove monsterMove = _level2Monster.GetComponent<MonsterMove>();
         GameObject monster = Instantiate(_level2Monster, _monsterLevel2MakePoint.position, Quaternion.identity);
         monster.transform.parent = transform;
-        Debug.Log("Level2 Monster");
+
+        if (monsterMove != null)
+        {
+            monsterMove.SetTargetPlayer(_targetPlayer);
+        }
     }
 
-    void SpawnMonsterLevel3()
+    void SpawnMonsterLevel3() // Level_3 Monster
     {
+        MonsterMove monsterMove = _level3Monster.GetComponent<MonsterMove>();
         GameObject monster = Instantiate(_level3Monster, _monsterLevel3MakePoint.position, Quaternion.identity);
         monster.transform.parent = transform;
-        Debug.Log("Level3 Monster");
+
+        if (monsterMove != null)
+        {
+            monsterMove.SetTargetPlayer(_targetPlayer);
+        }
     }
 }
