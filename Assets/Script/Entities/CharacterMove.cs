@@ -8,7 +8,7 @@ public class CharacterMove : MonoBehaviour
     private slow _slow;
     private CharacterController _controller;
     private Vector2 _MoveDirection = Vector2.zero; 
-    private float _Speed = 1f;
+    public float _Speed = 1f;
     private Rigidbody2D _Rigidbody;
     public static float normalSpeed = 9.0f;
 

@@ -84,12 +84,11 @@ public class Animashun : MonoBehaviour
             setTime = 5; //점멸시간 5초 ㄱㄷ
         }
 
-        Debug.Log($"HP가 {Player.Instance.currentHp} 만큼 남았어!");
-
         if (Player.Instance.currentHp <= 0) //체력 0보다 같거나 작을 때
         {
             penguinDie.SetBool("YouDie", true); //실행 
         }
+
         else if(Player.Instance.currentHp > 0)
         {
             penguinDie.SetBool("YouDie", false); //실행 ㄴ

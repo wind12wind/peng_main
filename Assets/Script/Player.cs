@@ -13,7 +13,7 @@ public class Player : MonoBehaviour
     private int maxHp;
     public int currentHp;
     private int maxMp;
-    private int currentMp;
+    public int currentMp;
 
 
     public static Player Instance { get; private set; }
@@ -27,7 +27,7 @@ public class Player : MonoBehaviour
         maxHp = 100;
         currentHp = 100; //이거 사용할게요 
         maxMp = 100;
-        currentMp = 100;
+        currentMp = 30;
 
         if (Instance == null)
         {
