@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
@@ -16,12 +14,6 @@ public class EndPanelUI : MonoBehaviour
     void Start()
     {
         WriteScore();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 
     private void WriteScore()
