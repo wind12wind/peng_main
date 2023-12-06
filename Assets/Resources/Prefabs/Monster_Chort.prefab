@@ -35,7 +35,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &4139614373066590986
 SpriteRenderer:
@@ -185,10 +185,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   monsterType: 0
-  maxHp: 0
-  currentHp: 0
-  atk: 0
+  Hp: 0
   speed: 0
+  isDead: 0
 --- !u!114 &1189944897896087488
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -201,4 +200,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 096086c00b07897468a803490631c7eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetPlayer: {fileID: 0}
