@@ -15,7 +15,7 @@
 - 왕관&옥수수 - 공조
   
 ### 💻 개발 환경
-- 'Unity Hub.3.5.1'
+- `Unity Hub.3.5.1`
 - `Unity` `Editor Version 2022.3.2f1`
 - `c#` Visual Studio 2022
 
