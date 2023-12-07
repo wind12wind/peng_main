@@ -16,12 +16,18 @@ public class ItemSpawn : MonoBehaviour
     void Update()
     {
         spawnTimer += Time.deltaTime;
-        //itemBoxTimer += Time.deltaTime;
+        itemBoxTimer += Time.deltaTime;
 
         if (spawnTimer >= 5f)
         {
             spawnTimer = 0;
             PotionRandomSpawn();
+        }
+
+        if (itemBoxTimer >= 5f)
+        {
+            itemBoxTimer= 0;
+            ItemBoxRandomSpawn();
         }
     }
 
@@ -48,5 +54,14 @@ public class ItemSpawn : MonoBehaviour
                 //Debug.Log("²Î");
                 break;
         }
+    }
+
+    private void ItemBoxRandomSpawn()
+    {
+        Vector3 randomPosition = new Vector3(Random.Range(minX, maxX), Random.Range(minY, maxY));
+
+        GameObject randomBox = Instantiate(itemBox[0], randomPosition, Quaternion.identity);
+        randomBox.transform.parent = transform;
+
     }
 }

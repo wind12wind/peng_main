@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class Shooting : MonoBehaviour
@@ -33,7 +34,14 @@ public class Shooting : MonoBehaviour
 
     private void OnShoot()
     {
-        CreateSnowBall();
+        if(Player.Instance.doubleShot)
+        {
+            SkillDoubleShot();
+        }
+        else
+        {
+            CreateSnowBall();
+        }
     }
 
     private void CreateSnowBall()
@@ -44,6 +52,21 @@ public class Shooting : MonoBehaviour
         {
             SnowBallRigid.velocity = _aimDirection.normalized * SnowBallSpeed;
         }
+    }
+    private void SkillDoubleShot()
+    {
+        CreateSnowBall();
+
+        _aimDirection = new Vector2(_aimDirection.y, _aimDirection.x);
+
+        StartCoroutine(DoubleShotDelay());
+    }
+
+    private IEnumerator DoubleShotDelay()
+    {
+        yield return new WaitForSeconds(0.1f);
+
+        CreateSnowBall();
     }
 
     private void OnMoveRotation(Vector2 newMoveDirection)

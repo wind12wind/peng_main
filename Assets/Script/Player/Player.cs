@@ -12,6 +12,7 @@ public class Player : MonoBehaviour
     private int maxMp;
 
     private bool isDead;
+    public bool doubleShot;
 
     private void Awake()
     {
@@ -51,5 +52,16 @@ public class Player : MonoBehaviour
     private void PlayerIsDead()
     {
         GameManager.Instance.GameOver();
+    }
+
+    public void PlusAtk()
+    {
+        Atk += 5;
+        Debug.Log($"플레이어의 현재 공격력 {Atk}");
+    }
+
+    public void DoubleShotOn()
+    {
+        doubleShot = true;
     }
 }

@@ -4,30 +4,36 @@ using UnityEngine;
 
 public class AbilitySelectButton : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private GameObject abilitySelectUI;
+    [SerializeField] private GameObject havePanelUI;
+
+    public void PlayerAtkUpSelected()
     {
-        
+        Player.Instance.PlusAtk();
+
+        Destroy(abilitySelectUI);
+        Time.timeScale = 1.0f;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void DoubleShotSelected()
     {
-        
+        if (Player.Instance.doubleShot == false)
+        {
+            Player.Instance.DoubleShotOn();
+
+            Destroy(abilitySelectUI);
+            Time.timeScale = 1.0f;
+        }
+        else
+        {
+            GameObject alreadyHavePanel = Resources.Load<GameObject>("ManagerAndUI/AlreadyHaveUI");
+            Instantiate(alreadyHavePanel);
+        }
     }
 
-    private void PlayerAtkUpSelected()
+    public void HavePanelEnter()
     {
-        
+        Destroy(havePanelUI);
     }
 
-    private void DoubleShotSelected()
-    {
-
-    }
-
-    private void TripleShotSelected()
-    {
-
-    }
 }

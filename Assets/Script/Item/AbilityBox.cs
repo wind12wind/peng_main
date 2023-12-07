@@ -4,19 +4,16 @@ using UnityEngine;
 public class AbilityBox : MonoBehaviour
 {
     [SerializeField] private GameObject abilitySelectUI;
-    public List<Sprite> abilityImages;
 
-    //private void OnTriggerEnter2D(Collider2D abilityBox)
-    //{
-    //    if (abilityBox.CompareTag("Character"))
-    //    {
-    //        Destroy(gameObject);
-    //        Invoke("AbilitySelect", 0f);
-    //    }
-    //}
+    private void OnTriggerEnter2D(Collider2D abilityBox)
+    {
+        if (abilityBox.CompareTag("Character"))
+        {
+            Destroy(gameObject);
+            GameObject abilityPanel = Resources.Load<GameObject>("ManagerAndUI/AbilitySelectUI");
+            Instantiate(abilityPanel);
 
-    //private void AbilitySelect()
-    //{
-    //    abilitySelectUI.SetActive(true);
-    //}
+            Time.timeScale = 0.0f;
+        }
+    }
 }
