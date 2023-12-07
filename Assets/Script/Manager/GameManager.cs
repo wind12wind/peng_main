@@ -98,6 +98,7 @@ public class GameManager : MonoBehaviour
     {
         //Debug.Log("RetryGame");
         SceneManager.LoadScene("SampleScene");
+        ScoreManager.Score.ResetKill();
 
         CurrentTime = 0.0f;
         Kill = 0;
