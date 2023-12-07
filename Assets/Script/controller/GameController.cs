@@ -10,25 +10,25 @@ public class GameController : MonoBehaviour
 
     public void CallRetry()
     {
-        Debug.Log("CallRetry");
+        //Debug.Log("CallRetry");
         OnRetryEvent?.Invoke();
     }
 
     public void CallPause()
     {
-        Debug.Log("CallPause");
+        //Debug.Log("CallPause");
         OnPauseEvent?.Invoke();
     }
 
     public void CallResume()
     {
-        Debug.Log("CallResume");
+        //Debug.Log("CallResume");
         OnResumeEvent?.Invoke();
     }
 
     public void CallInitScore()
     {
-        Debug.Log("CallInitScore");
+        //Debug.Log("CallInitScore");
         OnInitBestScoreKeyEvent?.Invoke();
     }
 }

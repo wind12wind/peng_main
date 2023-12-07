@@ -33,24 +33,19 @@ public class ItemSpawn : MonoBehaviour
         switch (random)
         {
             case 0:
-                Debug.Log("²Î");
-                break;
-            case 1:
                 GameObject hpPotion = Instantiate(itemBox[1], randomPosition, Quaternion.identity);
                 hpPotion.transform.parent = transform;
                 break;
-            case 2:
+            case 1:
                 GameObject mpPotion = Instantiate(itemBox[2], randomPosition, Quaternion.identity);
                 mpPotion.transform.parent = transform;
                 break;
-            case 3:
+            case 2:
                 GameObject speedPotion = Instantiate(itemBox[3], randomPosition, Quaternion.identity);
                 speedPotion.transform.parent = transform;
                 break;
-            case 4:
-                Debug.Log("²Î");
-                break;
             default:
+                //Debug.Log("²Î");
                 break;
         }
     }

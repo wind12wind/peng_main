@@ -39,7 +39,7 @@ public class Monster : MonoBehaviour
             int TotalDamage = Player.Instance.Atk;
             Hp -= TotalDamage;
 
-            Debug.Log($"체력 {Hp}");
+            //Debug.Log($"체력 {Hp}");
 
             if (Hp<= 0 && !isDead)
             {
