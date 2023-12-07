@@ -16,9 +16,9 @@
   
 ### 💻 개발 환경
 - 개발 툴 버전 관리 : `Unity Hub.3.5.1`
-- 게임 개발 툴      : `Unity` `Editor Version 2022.3.2f1`
-- 협업 환경         : GitHub Desktop
-- 스크립트 작업 툴  : `c#` Visual Studio 2022
+- 게임 개발 툴 : `Unity` `Editor Version 2022.3.2f1`
+- 협업 환경 : GitHub Desktop
+- 스크립트 작업 툴 : `c#` Visual Studio 2022
 
 ### ❕ 기능
 - 필수 기능사항
